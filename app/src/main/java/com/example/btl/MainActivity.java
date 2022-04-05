@@ -16,15 +16,21 @@ import model.Product;
 
 public class MainActivity extends AppCompatActivity {
 
+
     Button login, register;
     ListView products;
     ArrayList<Product> productArrayList;
+
+    Button login, register, homescreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
+        homescreen = (Button) findViewById(R.id.btn_home_screen);
+        ClickHomescreen();
         ClickLogin();
         ClickRegister();
         Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
@@ -37,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    //bắt sự kiện homescreen
+    private void ClickHomescreen() {
+        homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));
+    }
+
 
     // bắt sự kiện onclick login
     public void ClickLogin() {
