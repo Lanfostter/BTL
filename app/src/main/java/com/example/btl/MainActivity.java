@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+// da ngu vl
     //bắt sự kiện homescreen
     private void ClickHomescreen() {
         homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));
