@@ -17,7 +17,7 @@ import model.Product;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button login, register, homescreen;
+    Button login, register, homescreen, addproduct;
     ListView products;
     ArrayList<Product> productArrayList;
 
@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
+        addproduct = (Button) findViewById(R.id.btn_add_product);
         ClickHomescreen();
         ClickLogin();
         ClickRegister();
+        AddProduct();
         Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
         sqlite.QueryData("CREATE TABLE IF NOT EXISTS PRODUCT(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(50), IMAGE VARCHAR(255), " +
                 "QUANTITY INTEGER, PRICE DOUBLE)");
@@ -43,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-// da ngu vl
+    // da ngu vl
     //bắt sự kiện homescreen
+    private void AddProduct() {
+        addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
+    }
+
     private void ClickHomescreen() {
         homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));
     }

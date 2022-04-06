@@ -16,11 +16,13 @@ public class ProductAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Product> products;
+    private String img;
 
-    public ProductAdapter(Context context, int layout, List<Product> products) {
+    public ProductAdapter(Context context, int layout, List<Product> products, String img) {
         this.context = context;
         this.layout = layout;
         this.products = products;
+        this.img = img;
     }
 
     @Override
