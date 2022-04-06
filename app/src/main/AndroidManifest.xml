@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-
+            android:name=".AddProduct"
+            android:exported="false" />
+        <activity
             android:name=".ListProduct"
             android:exported="false" />
         <activity
@@ -18,11 +20,9 @@
             android:exported="false"
             android:label="@string/title_activity_list_product" />
         <activity
-
             android:name=".HomeScreen"
             android:exported="false" />
         <activity
-
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

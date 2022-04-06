@@ -17,11 +17,10 @@ import model.Product;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button login, register;
+    Button login, register, homescreen;
     ListView products;
     ArrayList<Product> productArrayList;
 
-    Button login, register, homescreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

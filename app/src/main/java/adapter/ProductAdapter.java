@@ -17,7 +17,7 @@ public class ProductAdapter extends BaseAdapter {
     private int layout;
     private List<Product> products;
 
-    public ProductAdapter(String context, int layout, List<Product> products) {
+    public ProductAdapter(Context context, int layout, List<Product> products) {
         this.context = context;
         this.layout = layout;
         this.products = products;
@@ -25,7 +25,7 @@ public class ProductAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return products.size() x;
+        return products.size();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ProductAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            viewHolder.textView = (TextView) view.findViewById(R.id.)
+//            viewHolder.textView = (TextView) view.findViewById(R.id.)
         }
         return null;
     }
