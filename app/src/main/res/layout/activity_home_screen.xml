@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen">
     <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -18,6 +19,7 @@
                 android:background="#6287E4"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
+
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
                 android:id="@+id/viewflipper"

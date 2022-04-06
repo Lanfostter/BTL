@@ -1,13 +1,25 @@
 package com.example.btl;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
+
+import com.bumptech.glide.Glide;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Product> productArrayList;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         ClickHomescreen();
         ClickLogin();
         ClickRegister();
+
+
         Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
         sqlite.QueryData("CREATE TABLE IF NOT EXISTS PRODUCT(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(50), IMAGE VARCHAR(255), " +
                 "QUANTITY INTEGER, PRICE DOUBLE)");
@@ -42,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 // da ngu vl
     //bắt sự kiện homescreen
