@@ -4,7 +4,19 @@ public class Product {
     private int id;
     private String name;
     private int quantity;
-    private int price;
+    private double price;
+    private String image;
+
+    public Product(int id, String name, int quantity, double price, String image) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+    }
+
+    public Product() {
+    }
 
     public int getId() {
         return id;
@@ -30,21 +42,19 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Product(int id, String name, int quantity, int price) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
+    public String getImage() {
+        return image;
     }
 
-    public Product() {
+    public void setImage(String image) {
+        this.image = image;
     }
 }
