@@ -31,7 +31,7 @@ public class AddProduct extends AppCompatActivity {
                     }
                 }
             });
-
+// hello
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
