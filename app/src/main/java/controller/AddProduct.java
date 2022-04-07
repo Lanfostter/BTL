@@ -26,6 +26,7 @@ import model.Product;
 public class AddProduct extends AppCompatActivity {
     Button add, gallery;
     Product product = new Product();
+    Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -75,7 +76,6 @@ public class AddProduct extends AppCompatActivity {
     }
 
     private void insertProduct() {
-        Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +89,6 @@ public class AddProduct extends AppCompatActivity {
                 product.setPrice(Double.parseDouble(price.getText().toString()));
                 sqlite.QueryData("INSERT INTO PRODUCT VALUES(" + product.getId() + ",'" + product.getName() + "'," +
                         product.getQuantity() + "," + product.getPrice() + "," + product.getImage() + ")");
-
             }
         });
     }

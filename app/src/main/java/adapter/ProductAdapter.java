@@ -53,7 +53,7 @@ public class ProductAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-//            viewHolder.textView = (TextView) view.findViewById(R.id.)
+//            viewHolder.textView = (TextView) view.findViewById(R.id.);
         }
         return null;
     }
