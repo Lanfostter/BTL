@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,8 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import com.example.btl.R;
 import com.example.btl.Sqlite;
+
+import java.io.File;
+
 import model.Product;
 
 public class AddProduct extends AppCompatActivity {
@@ -31,7 +36,8 @@ public class AddProduct extends AppCompatActivity {
                     }
                 }
             });
-// hello
+
+    // hello
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +56,6 @@ public class AddProduct extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 mActivityResultLauncher.launch(intent);
-
             }
         });
 
@@ -63,6 +68,8 @@ public class AddProduct extends AppCompatActivity {
             Uri selectImage = data.getData();
             ImageView imageView = (ImageView) findViewById(R.id.img_product);
             imageView.setImageURI(selectImage);
+            File file = new File(selectImage.getPath());
+            product.setImage(file.getPath());
         }
 
     }
@@ -80,6 +87,9 @@ public class AddProduct extends AppCompatActivity {
                 product.setName(name.getText().toString());
                 product.setQuantity(Integer.parseInt(quantity.getText().toString()));
                 product.setPrice(Double.parseDouble(price.getText().toString()));
+                sqlite.QueryData("INSERT INTO PRODUCT VALUES(" + product.getId() + ",'" + product.getName() + "'," +
+                        product.getQuantity() + "," + product.getPrice() + "," + product.getImage() + ")");
+
             }
         });
     }

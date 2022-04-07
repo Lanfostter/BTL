@@ -17,11 +17,7 @@ import model.Product;
 public class MainActivity extends AppCompatActivity {
 
 
-<<<<<<< Updated upstream
-    Button login, register, homescreen, addproduct;
-=======
-    Button login, register, homescreen, cart;
->>>>>>> Stashed changes
+    Button login, register, homescreen, addproduct, cart;
     ListView products;
     ArrayList<Product> productArrayList;
 
@@ -34,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
-<<<<<<< Updated upstream
         addproduct = (Button) findViewById(R.id.btn_add_product);
         ClickHomescreen();
         ClickLogin();
@@ -42,13 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         AddProduct();
 
-=======
         cart = (Button) findViewById(R.id.btn_cart);
         ClickHomescreen();
         ClickLogin();
         ClickRegister();
         ClickCart();
->>>>>>> Stashed changes
         Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
         sqlite.QueryData("CREATE TABLE IF NOT EXISTS PRODUCT(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(50), IMAGE VARCHAR(255), " +
                 "QUANTITY INTEGER, PRICE DOUBLE)");
@@ -65,10 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     //bắt sự kiện homescreen
     private void AddProduct() {
         addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));

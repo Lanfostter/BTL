@@ -21,7 +21,6 @@
     <string name="name">Name</string>
     <string name="s_n_ph_m_m_i">Sản phẩm mới</string>
     <string name="home">Home</string>
-<<<<<<< Updated upstream
     <string name="txt_id">ID</string>
     <string name="txt_name">Name</string>
     <string name="txt_quantity">Quantity</string>
@@ -34,6 +33,5 @@
     <string name="Bt_Upload">Upload Image</string>
     <string name="AddProduct">Add</string>
     <string name="todo">TODO</string>
-=======
->>>>>>> Stashed changes
+    <string name="cart">Cart</string>
 </resources>

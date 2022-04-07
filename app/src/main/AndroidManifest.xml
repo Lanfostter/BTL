@@ -12,20 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-<<<<<<< Updated upstream
-            android:name="controller.AddProduct"
-=======
             android:name=".ShoppingCart"
             android:exported="false" />
         <activity
-            android:name=".AddProduct"
->>>>>>> Stashed changes
+            android:name="controller.AddProduct"
             android:exported="false" />
         <activity
-            android:name=".ListProduct"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.ListProduct"
+            android:name="controller.ListProduct"
             android:exported="false"
             android:label="@string/title_activity_list_product" />
         <activity
