@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
+<<<<<<< Updated upstream
             android:name="controller.AddProduct"
+=======
+            android:name=".ShoppingCart"
+            android:exported="false" />
+        <activity
+            android:name=".AddProduct"
+>>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".ListProduct"

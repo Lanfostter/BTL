@@ -17,7 +17,11 @@ import model.Product;
 public class MainActivity extends AppCompatActivity {
 
 
+<<<<<<< Updated upstream
     Button login, register, homescreen, addproduct;
+=======
+    Button login, register, homescreen, cart;
+>>>>>>> Stashed changes
     ListView products;
     ArrayList<Product> productArrayList;
 
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
+<<<<<<< Updated upstream
         addproduct = (Button) findViewById(R.id.btn_add_product);
         ClickHomescreen();
         ClickLogin();
@@ -37,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         AddProduct();
 
+=======
+        cart = (Button) findViewById(R.id.btn_cart);
+        ClickHomescreen();
+        ClickLogin();
+        ClickRegister();
+        ClickCart();
+>>>>>>> Stashed changes
         Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
         sqlite.QueryData("CREATE TABLE IF NOT EXISTS PRODUCT(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(50), IMAGE VARCHAR(255), " +
                 "QUANTITY INTEGER, PRICE DOUBLE)");
@@ -47,25 +59,35 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         }
     }
+    //bắt sự kiện ShopingCart
+    private void ClickCart() {
+        cart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShoppingCart.class)));// chuyen trang Cart
+    }
 
 
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
     //bắt sự kiện homescreen
     private void AddProduct() {
         addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
     }
 
     private void ClickHomescreen() {
-        homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));
+        homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));// chuyen trang home
     }
 
 
     // bắt sự kiện onclick login
     public void ClickLogin() {
-        login.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
+        login.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));// chuyen trang
     }
 
     // bắt sự kiện onclick register
     public void ClickRegister() {
         register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
+
+
 }
