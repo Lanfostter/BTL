@@ -21,13 +21,12 @@ import com.example.btl.Sqlite;
 
 import java.io.File;
 
-import dao.ProductDaoImpl;
 import model.Product;
 
 public class AddProduct extends AppCompatActivity {
     Button add, gallery;
     Product product = new Product();
-    Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
+    Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -87,10 +86,8 @@ public class AddProduct extends AppCompatActivity {
                 Product newproduct = new Product(Integer.parseInt(id.getText().toString())
                         , name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
                         Double.parseDouble(price.getText().toString()), product.getImage());
-//                sqlite.QueryData("INSERT INTO PRODUCT VALUES(" + product.getId() + ",'" + product.getName() + "'," +
-//                        product.getQuantity() + "," + product.getPrice() + "," + product.getImage() + ")");
-                ProductDaoImpl productDaoImpl = new ProductDaoImpl();
-                productDaoImpl.insertProduct(newproduct);
+                sqlite.insertProduct(newproduct);
+
             }
         });
     }

@@ -3,24 +3,23 @@ package com.example.btl;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import controller.AddProduct;
+import controller.ListProduct;
 import model.Product;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    Button login, register, homescreen, addproduct, cart;
+    Button login, register, homescreen, addproduct, cart, listproduct;
     ListView products;
     ArrayList<Product> productArrayList;
-
 
 
     @Override
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
         addproduct = (Button) findViewById(R.id.btn_add_product);
+        listproduct = (Button) findViewById(R.id.btn_listproduct);
         ClickHomescreen();
         ClickLogin();
         ClickRegister();
@@ -42,21 +42,22 @@ public class MainActivity extends AppCompatActivity {
         ClickLogin();
         ClickRegister();
         ClickCart();
-        Sqlite sqlite = new Sqlite(this, "App Electronics Devices Sale", null, 1);
-        sqlite.QueryData("CREATE TABLE IF NOT EXISTS PRODUCT(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(50), IMAGE VARCHAR(255), " +
-                "QUANTITY INTEGER, PRICE DOUBLE)");
-//        sqlite.QueryData("INSERT INTO PRODUCT VALUES(1, 'GTX2060', 100, 2001), (2, 'GTX20601', 100, 2000)");
-        Cursor dataProduct = sqlite.getData("SELECT * FROM PRODUCT");
-        while (dataProduct.moveToNext()) {
-            String name = dataProduct.getString(1);
-            Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
-        }
+        ClickList();
+
+        Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale", null, 1);
+        SQLiteDatabase sqLiteDatabase = sqlite.getReadableDatabase();
+        sqlite.onCreate(sqLiteDatabase);
     }
+
     //bắt sự kiện ShopingCart
     private void ClickCart() {
         cart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShoppingCart.class)));// chuyen trang Cart
     }
 
+    private void ClickList() {
+        listproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ListProduct.class)));
+
+    }
 
 
     //bắt sự kiện homescreen
