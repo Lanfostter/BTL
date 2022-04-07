@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class Sqlite extends SQLiteOpenHelper {
+
     public Sqlite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-
     // ko tra ket qua
     public void QueryData(String sql) {
         SQLiteDatabase database = getWritableDatabase();

@@ -21,6 +21,7 @@ import com.example.btl.Sqlite;
 
 import java.io.File;
 
+import dao.ProductDaoImpl;
 import model.Product;
 
 public class AddProduct extends AppCompatActivity {
@@ -83,12 +84,13 @@ public class AddProduct extends AppCompatActivity {
                 EditText name = (EditText) findViewById(R.id.edit_txt_name);
                 EditText quantity = (EditText) findViewById(R.id.edit_txt_quantity);
                 EditText price = (EditText) findViewById(R.id.edit_txt_price);
-                product.setId(Integer.parseInt(id.getText().toString()));
-                product.setName(name.getText().toString());
-                product.setQuantity(Integer.parseInt(quantity.getText().toString()));
-                product.setPrice(Double.parseDouble(price.getText().toString()));
-                sqlite.QueryData("INSERT INTO PRODUCT VALUES(" + product.getId() + ",'" + product.getName() + "'," +
-                        product.getQuantity() + "," + product.getPrice() + "," + product.getImage() + ")");
+                Product newproduct = new Product(Integer.parseInt(id.getText().toString())
+                        , name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
+                        Double.parseDouble(price.getText().toString()), product.getImage());
+//                sqlite.QueryData("INSERT INTO PRODUCT VALUES(" + product.getId() + ",'" + product.getName() + "'," +
+//                        product.getQuantity() + "," + product.getPrice() + "," + product.getImage() + ")");
+                ProductDaoImpl productDaoImpl = new ProductDaoImpl();
+                productDaoImpl.insertProduct(newproduct);
             }
         });
     }
