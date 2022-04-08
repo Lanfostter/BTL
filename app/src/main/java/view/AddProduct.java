@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.btl.R;
 
@@ -87,6 +89,15 @@ public class AddProduct extends AppCompatActivity {
                         name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
                         price.getText().toString(), product.getImage());
                 sqlite.insertProduct(newproduct);
+                if (sqlite.insertProduct(newproduct) == true) {
+                    Toast toast = Toast.makeText(AddProduct.this, "Thêm thành công", Toast.LENGTH_LONG);
+                    toast.show();
+                    Intent intent = new Intent(AddProduct.this, ListProduct.class);
+                    startActivity(intent);
+                } else {
+                    Toast toast = Toast.makeText(AddProduct.this, "Thêm thất bại", Toast.LENGTH_LONG);
+                    toast.show();
+                }
 
             }
         });

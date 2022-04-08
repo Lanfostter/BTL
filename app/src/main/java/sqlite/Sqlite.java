@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -23,7 +24,7 @@ public class Sqlite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) PRIMARY KEY AUTOINCREMENT, p_name VARCHAR(50)," +
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) PRIMARY KEY, p_name VARCHAR(50)," +
                 "p_quantity INTEGER, p_price VARCHAR(50), p_img VARCHAR(255))");
     }
 
@@ -52,7 +53,7 @@ public class Sqlite extends SQLiteOpenHelper {
         contentValues.put("p_quantity", product.getQuantity());
         contentValues.put("p_price", product.getPrice());
         contentValues.put("p_img", product.getImage());
-        database.insert("product", null, contentValues);
+        database.insert("PRODUCT", null, contentValues);
         database.close();
         return true;
     }
