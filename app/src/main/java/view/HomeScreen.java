@@ -46,10 +46,12 @@ public class HomeScreen extends AppCompatActivity {
 
     private void ActionMenu() {
         arrayList = new ArrayList<>();
+        arrayList.add(new ItemMenu("Trang chủ", R.drawable.home));
         arrayList.add(new ItemMenu("Điện thoại", R.drawable.smartphone));
         arrayList.add(new ItemMenu("Laptop", R.drawable.laptop));
         arrayList.add(new ItemMenu("Liên hệ", R.drawable.support));
         arrayList.add(new ItemMenu("Thông tin", R.drawable.info));
+        arrayList.add(new ItemMenu("Đăng nhập", R.drawable.login));
         adapter = new MenuAdapter(this, R.layout.item_rows, arrayList);
         listViewTrangChu.setAdapter(adapter);
     }
