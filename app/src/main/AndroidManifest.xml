@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
+            android:name="view.ManageActivity"
+            android:exported="false" />
+        <activity
             android:name="view.UpdateProduct"
             android:exported="false" />
         <activity
