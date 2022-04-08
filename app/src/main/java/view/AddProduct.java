@@ -98,7 +98,6 @@ public class AddProduct extends AppCompatActivity {
                     Toast toast = Toast.makeText(AddProduct.this, "Thêm thất bại", Toast.LENGTH_LONG);
                     toast.show();
                 }
-
             }
         });
     }
