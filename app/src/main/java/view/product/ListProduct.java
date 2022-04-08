@@ -1,4 +1,4 @@
-package view;
+package view.product;
 
 import androidx.appcompat.app.AppCompatActivity;
 

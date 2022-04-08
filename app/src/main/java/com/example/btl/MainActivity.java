@@ -6,19 +6,13 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ListView;
 
-import java.util.ArrayList;
-
-import adapter.MenuAdapter;
 import sqlite.Sqlite;
-import view.AddProduct;
+import view.product.AddProduct;
 import view.HomeScreen;
-import view.ItemMenu;
-import view.ListProduct;
-import model.Product;
-import view.LoginActivity;
-import view.RegisterActivity;
+import view.product.ListProduct;
+import view.account.LoginActivity;
+import view.account.RegisterActivity;
 import view.ShoppingCart;
 
 public class MainActivity extends AppCompatActivity {

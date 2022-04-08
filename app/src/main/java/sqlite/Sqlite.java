@@ -18,6 +18,7 @@ import model.Product;
 
 public class Sqlite extends SQLiteOpenHelper {
     String allColumns[] = {"p_id, p_name, p_quantity, p_price, p_img"};
+    String allColumnsA[] = {"u_id, u_username, u_password, u_role"};
 
     public Sqlite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, "AppElectronicsDevicesSale.sqlite", null, 1);
@@ -61,18 +62,6 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertAccount(Account account) {
-        SQLiteDatabase database = getReadableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("u_id", account.getId());
-        contentValues.put("u_username", account.getUsername());
-        contentValues.put("u_password", account.getPassword());
-        contentValues.put("u_role", account.getRole());
-        database.insert("ACCOUNT", null, contentValues);
-        database.close();
-        return true;
-    }
-
     public boolean updateProduct(Product product) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -81,8 +70,14 @@ public class Sqlite extends SQLiteOpenHelper {
         contentValues.put("p_price", product.getPrice());
         contentValues.put("p_img", product.getImage());
         database.update("product", contentValues,
-                "where p_id = " + product.getId(), null);
+                product.getId(), null);
         database.close();
+        return true;
+    }
+
+    public boolean deleteProduct(Product product) {
+        SQLiteDatabase database = getReadableDatabase();
+        database.delete("Product", product.getId(), null);
         return true;
     }
 
@@ -92,7 +87,6 @@ public class Sqlite extends SQLiteOpenHelper {
         products.clear();
         Cursor cursor = database.query("product", allColumns, null,
                 null, null, null, null);
-        Log.e("Size", cursor.getCount() + " ");
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Product product = cursorToProduct(cursor);
@@ -112,6 +106,61 @@ public class Sqlite extends SQLiteOpenHelper {
         product.setPrice(cursor.getString(3));
         product.setImage(cursor.getString(4));
         return product;
+    }
+
+    public boolean insertAccount(Account account) {
+        SQLiteDatabase database = getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("u_id", account.getId());
+        contentValues.put("u_username", account.getUsername());
+        contentValues.put("u_password", account.getPassword());
+        contentValues.put("u_role", account.getRole());
+        database.insert("ACCOUNT", null, contentValues);
+        database.close();
+        return true;
+    }
+
+    public boolean updateAccount(Account account) {
+        SQLiteDatabase database = getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("u_username", account.getUsername());
+        contentValues.put("u_password", account.getPassword());
+        contentValues.put("u_role", account.getRole());
+        database.update("ACCOUNT", contentValues, String.valueOf(account.getId()), null);
+        database.close();
+        return true;
+    }
+
+    public List<Account> getAllAccount() {
+        SQLiteDatabase database = getReadableDatabase();
+        List<Account> accounts = new ArrayList<>();
+        accounts.clear();
+        Cursor cursor = database.query("account", allColumnsA, null,
+                null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Account account = cursorToAccount(cursor);
+            accounts.add(account);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        database.close();
+        return accounts;
+    }
+
+    private boolean deleteAccount(Account account) {
+        SQLiteDatabase database = getReadableDatabase();
+        database.delete("ACCOUNT", String.valueOf(account.getId()), null);
+        return true;
+    }
+
+    private Account cursorToAccount(Cursor cursor) {
+        Account account = new Account();
+        account.setId(cursor.getInt(0));
+        account.setUsername(cursor.getString(1));
+        account.setPassword(cursor.getString(2));
+        account.setRole(cursor.getString(3));
+        return account;
     }
 
 }

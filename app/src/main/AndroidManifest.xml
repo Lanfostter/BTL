@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-            android:name="view.UpdateProduct"
+            android:name="view.product.UpdateProduct"
             android:exported="false" />
         <activity
-            android:name="view.ListProduct"
+            android:name="view.product.ListProduct"
             android:exported="false" />
         <activity
             android:name="view.ProductDetail"
@@ -24,16 +24,16 @@
             android:name="view.ShoppingCart"
             android:exported="false" />
         <activity
-            android:name="view.AddProduct"
+            android:name="view.product.AddProduct"
             android:exported="false" />
         <activity
             android:name="view.HomeScreen"
             android:exported="false" />
         <activity
-            android:name="view.RegisterActivity"
+            android:name="view.account.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="view.LoginActivity"
+            android:name="view.account.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
