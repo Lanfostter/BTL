@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-<<<<<<< Updated upstream
             android:name="view.UpdateProduct"
-=======
-            android:name="view.payment"
->>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name="view.ListProduct"

@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         ClickRegister();
         ClickCart();
         ClickList();
+        AddProduct();
         Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale", null, 1);
         SQLiteDatabase sqLiteDatabase = sqlite.getReadableDatabase();
         sqlite.onCreate(sqLiteDatabase);

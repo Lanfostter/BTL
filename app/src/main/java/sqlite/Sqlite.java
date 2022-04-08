@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Account;
 import model.Product;
 
 public class Sqlite extends SQLiteOpenHelper {
@@ -56,6 +57,18 @@ public class Sqlite extends SQLiteOpenHelper {
         contentValues.put("p_price", product.getPrice());
         contentValues.put("p_img", product.getImage());
         database.insert("PRODUCT", null, contentValues);
+        database.close();
+        return true;
+    }
+
+    public boolean insertAccount(Account account) {
+        SQLiteDatabase database = getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("u_id", account.getId());
+        contentValues.put("u_username", account.getUsername());
+        contentValues.put("u_password", account.getPassword());
+        contentValues.put("u_role", account.getRole());
+        database.insert("ACCOUNT", null, contentValues);
         database.close();
         return true;
     }
