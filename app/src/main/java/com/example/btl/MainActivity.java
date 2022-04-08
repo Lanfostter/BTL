@@ -36,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
         homescreen = (Button) findViewById(R.id.btn_home_screen);
         addproduct = (Button) findViewById(R.id.btn_add_product);
         listproduct = (Button) findViewById(R.id.btn_listproduct);
-        ClickHomescreen();
-        ClickLogin();
-        ClickRegister();
-
-        AddProduct();
-
         cart = (Button) findViewById(R.id.btn_cart);
         ClickHomescreen();
         ClickLogin();

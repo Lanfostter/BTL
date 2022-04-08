@@ -59,7 +59,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:id="@+id/txttongtien"
-            android:text="50.000 đồng "
+            android:text="50000 đồng "
             android:gravity="right"
             android:textSize="18sp"
             android:textColor="@color/black"
