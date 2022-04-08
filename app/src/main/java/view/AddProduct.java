@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.btl.R;
-import com.example.btl.Sqlite;
+import sqlite.Sqlite;
 
 import java.io.File;
 

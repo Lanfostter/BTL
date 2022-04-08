@@ -1,17 +1,14 @@
-package controller;
+package view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.btl.R;
-import com.example.btl.Sqlite;
+import sqlite.Sqlite;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Product;

@@ -10,9 +10,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import controller.AddProduct;
-import controller.ListProduct;
+import sqlite.Sqlite;
+import view.AddProduct;
+import view.HomeScreen;
+import view.ListProduct;
 import model.Product;
+import view.LoginActivity;
+import view.RegisterActivity;
+import view.ShoppingCart;
 
 public class MainActivity extends AppCompatActivity {
 

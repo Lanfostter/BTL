@@ -12,25 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL" >
         <activity
-            android:name="controller.ListProduct"
+            android:name="view.ListProduct"
             android:exported="false" />
         <activity
-            android:name=".ProductDetail"
+            android:name="view.ProductDetail"
             android:exported="false" />
         <activity
-            android:name=".ShoppingCart"
+            android:name="view.ShoppingCart"
             android:exported="false" />
         <activity
-            android:name="controller.AddProduct"
+            android:name="view.AddProduct"
             android:exported="false" />
         <activity
-            android:name=".HomeScreen"
+            android:name="view.HomeScreen"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="view.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="view.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
