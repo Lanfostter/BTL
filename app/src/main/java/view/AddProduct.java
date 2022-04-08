@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.btl.R;
+
 import sqlite.Sqlite;
 
 import java.io.File;
@@ -82,9 +83,9 @@ public class AddProduct extends AppCompatActivity {
                 EditText name = (EditText) findViewById(R.id.edit_txt_name);
                 EditText quantity = (EditText) findViewById(R.id.edit_txt_quantity);
                 EditText price = (EditText) findViewById(R.id.edit_txt_price);
-                Product newproduct = new Product(Integer.parseInt(id.getText().toString())
-                        , name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
-                        Double.parseDouble(price.getText().toString()), product.getImage());
+                Product newproduct = new Product(id.getText().toString(),
+                        name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
+                        price.getText().toString(), product.getImage());
                 sqlite.insertProduct(newproduct);
 
             }

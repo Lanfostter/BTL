@@ -23,8 +23,8 @@ public class Sqlite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id INTEGER PRIMARY KEY AUTOINCREMENT, p_name VARCHAR(50)," +
-                "p_quantity INTEGER, p_price DOUBLE, p_img VARCHAR(255))");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) PRIMARY KEY AUTOINCREMENT, p_name VARCHAR(50)," +
+                "p_quantity INTEGER, p_price VARCHAR(50), p_img VARCHAR(255))");
     }
 
     @Override
@@ -90,10 +90,10 @@ public class Sqlite extends SQLiteOpenHelper {
 
     private Product cursorToProduct(Cursor cursor) {
         Product product = new Product();
-        product.setId(cursor.getInt(0));
+        product.setId(cursor.getString(0));
         product.setName(cursor.getString(1));
         product.setQuantity(cursor.getInt(2));
-        product.setPrice(cursor.getDouble(3));
+        product.setPrice(cursor.getString(3));
         product.setImage(cursor.getString(4));
         return product;
     }

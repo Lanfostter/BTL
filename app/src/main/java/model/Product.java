@@ -1,13 +1,13 @@
 package model;
 
 public class Product {
-    private int id;
+    private String id;
     private String name;
     private int quantity;
-    private double price;
+    private String price;
     private String image;
 
-    public Product(int id, String name, int quantity, double price, String image) {
+    public Product(String id, String name, int quantity, String price, String image) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -18,11 +18,11 @@ public class Product {
     public Product() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
