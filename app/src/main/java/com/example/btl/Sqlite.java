@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -75,13 +76,13 @@ public class Sqlite extends SQLiteOpenHelper {
         products.clear();
         Cursor cursor = database.query("product", allColumns, null,
                 null, null, null, null);
+        Log.e("Size", cursor.getCount() + " ");
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Product product = cursorToProduct(cursor);
             products.add(product);
             cursor.moveToNext();
         }
-
         cursor.close();
         database.close();
         return products;
