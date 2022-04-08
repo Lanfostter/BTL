@@ -21,6 +21,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.MenuAdapter;
+
 public class HomeScreen extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -29,6 +31,8 @@ public class HomeScreen extends AppCompatActivity {
     NavigationView navigationView;
     ListView listViewTrangChu;
     DrawerLayout drawerLayout;
+    ArrayList<ItemMenu> arrayList;
+    MenuAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,17 @@ public class HomeScreen extends AppCompatActivity {
         Anhxa();
         ActionBar();
         ActionViewFlipper();
+        ActionMenu();
+    }
+
+    private void ActionMenu() {
+        arrayList = new ArrayList<>();
+        arrayList.add(new ItemMenu("Điện thoại", R.drawable.smartphone));
+        arrayList.add(new ItemMenu("Laptop", R.drawable.laptop));
+        arrayList.add(new ItemMenu("Liên hệ", R.drawable.support));
+        arrayList.add(new ItemMenu("Thông tin", R.drawable.info));
+        adapter = new MenuAdapter(this, R.layout.item_rows, arrayList);
+        listViewTrangChu.setAdapter(adapter);
     }
 
     private void ActionViewFlipper() {
