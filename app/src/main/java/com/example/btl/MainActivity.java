@@ -10,9 +10,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import adapter.MenuAdapter;
 import sqlite.Sqlite;
 import view.AddProduct;
 import view.HomeScreen;
+import view.ItemMenu;
 import view.ListProduct;
 import model.Product;
 import view.LoginActivity;
@@ -23,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button login, register, homescreen, addproduct, cart, listproduct;
-    ListView products;
-    ArrayList<Product> productArrayList;
+
 
 
     @Override
