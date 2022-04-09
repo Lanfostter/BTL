@@ -12,7 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-            android:name="view.product.UpdateProduct"
+            android:name="view.Infor"
+            android:exported="false" />
+        <activity
+            android:name="view.Contact"
+            android:exported="false" />
+        <activity
+            android:name="view.payment"
+            android:exported="false" />
+        <activity
+            android:name="view.PhoneList"
+            android:exported="false" />
+        <activity
+            android:name="view.LaptopList"
             android:exported="false" />
         <activity
             android:name="view.product.ListProduct"
