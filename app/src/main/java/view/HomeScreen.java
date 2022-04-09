@@ -6,10 +6,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
@@ -42,7 +45,40 @@ public class HomeScreen extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
         ActionMenu();
+        getEventClick();// tạo method
+
     }
+    // ánh xạ vao list
+    private void getEventClick() {
+        listViewTrangChu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        Intent trangchu = new Intent(getApplicationContext(), HomeScreen.class);
+                        startActivity(trangchu);
+                        break;
+                    case 1:
+                        Intent dienthoai= new Intent(getApplicationContext(), PhoneList.class);
+                        startActivity(dienthoai);
+                        break;
+                    case 2:
+                        Intent laptop= new Intent(getApplicationContext(), LaptopList.class);
+                        startActivity(laptop);
+                        break;
+                    case 3:
+                        Intent lienhe= new Intent(getApplicationContext(), Contact.class);
+                        startActivity(lienhe);
+                        break;
+                    case 4:
+                        Intent thongtin = new Intent(getApplicationContext(), Infor.class);
+                        startActivity(thongtin);
+                        break;
+                }
+            }
+        });
+    }
+
 
     private void ActionMenu() {
         arrayList = new ArrayList<>();
