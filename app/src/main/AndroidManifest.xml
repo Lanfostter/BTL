@@ -12,14 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
-<<<<<<< HEAD
             android:name="view.product.UpdateProduct"
-=======
-            android:name="view.ManageActivity"
-            android:exported="false" />
-        <activity
-            android:name="view.UpdateProduct"
->>>>>>> 455ca0eed75dd8ed23fd97b51eb95c4c0c687365
             android:exported="false" />
         <activity
             android:name="view.product.ListProduct"
@@ -52,5 +45,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

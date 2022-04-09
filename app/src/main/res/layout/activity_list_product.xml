@@ -7,6 +7,19 @@
 
     tools:context="view.product.ListProduct">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_list_product"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#4211C8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="List Product"
+        app:titleTextColor="#FBFBFB">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ListView
         android:id="@+id/lv_product"
         android:layout_width="409dp"

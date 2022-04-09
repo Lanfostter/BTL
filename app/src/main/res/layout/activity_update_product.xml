@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context="view.product.AddProduct">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_update_product"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:title="Update Product"
+        android:background="#4211C8"
+        app:titleTextColor="#FBFBFB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:id="@+id/img_product"
         android:layout_width="100dp"

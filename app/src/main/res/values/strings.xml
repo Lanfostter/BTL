@@ -15,8 +15,6 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="name">Name</string>
     <string name="s_n_ph_m_m_i">Sản phẩm mới</string>
@@ -35,4 +33,6 @@
     <string name="todo">TODO</string>
     <string name="cart">Cart</string>
     <string name="listproduct">ListProduct</string>
+    <string name="role">Role</string>
+    <string name="id">ID</string>
 </resources>
