@@ -114,7 +114,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void ActionBar() {
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

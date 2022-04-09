@@ -6,42 +6,40 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     tools:context="view.ManageActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarmanage"
-        app:title="Quản lý"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="#6287E4"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        app:title="Quản lý">
 
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@+id/toolbarmanage"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarmanage">
 
         <soup.neumorphism.NeumorphCardView
-            android:layout_marginTop="10dp"
+            style="@style/neumorphirmcard"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:neomorph_view_type="rectangular"
-            app:neomorph_shadow_type="outer"
-            style="@style/neumorphirmcard"
-            app:neomorph_background_color="@color/background"
-            app:neomorph_shadow_color="@color/shadow_color"
-            app:neomorph_highlight_color="@color/highlight">
+            android:layout_marginTop="10dp">
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
+
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_add_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_add_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,69 +56,65 @@
         </soup.neumorphism.NeumorphCardView>
 
         <soup.neumorphism.NeumorphCardView
-            android:layout_marginTop="10dp"
-            android:layout_width="100dp"
-            android:id="@+id/layout_email"
-            android:layout_height="100dp"
-            app:neomorph_view_type="rectangular"
-            app:neomorph_shadow_type="outer"
             style="@style/neumorphirmcard"
-            app:neomorph_background_color="@color/background"
-            app:neomorph_shadow_color="@color/shadow_color"
-            app:neomorph_highlight_color="@color/highlight">
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp">
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
+
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_edit_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_edit_24" />
+
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="Sửa"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
                     android:textColor="@android:color/holo_red_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
         </soup.neumorphism.NeumorphCardView>
 
         <soup.neumorphism.NeumorphCardView
-            android:layout_marginTop="10dp"
+            style="@style/neumorphirmcard"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:neomorph_view_type="rectangular"
-            app:neomorph_shadow_type="outer"
-            style="@style/neumorphirmcard"
-            app:neomorph_background_color="@color/background"
-            app:neomorph_shadow_color="@color/shadow_color"
-            app:neomorph_highlight_color="@color/highlight">
+
+            android:layout_marginTop="10dp">
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
+
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_delete_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_delete_24" />
+
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="Xóa"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
                     android:textColor="@android:color/holo_red_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
