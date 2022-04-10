@@ -7,7 +7,7 @@
     tools:context="view.ProductDetail">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
-        app:title="Chi tiết sản phẩm"
+        app:title="Detail"
         android:background="#2A9879"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/txt_product_name"
-                android:text="Tên sản phẩm"
+                android:text="Name"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -44,7 +44,7 @@
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="Giá: 1.000.000đ"
+                android:text="Price: 1.000.000đ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <Spinner
@@ -59,7 +59,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
-                android:text="Thêm vào giỏ hàng"
+                android:text="Add to Cart"
                 android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -77,7 +77,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="Mô tả chi tiết sản phẩm"
+            android:text="Describe:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <ScrollView

@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Liên hệ"
+        app:title="Contact"
         android:background="#BC9696"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>

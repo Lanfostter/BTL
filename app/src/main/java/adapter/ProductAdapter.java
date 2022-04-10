@@ -3,6 +3,7 @@ package adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,40 +13,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.btl.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Product;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    ArrayList<Product> products;
-    Context context;
-
-    public ProductAdapter(ArrayList<Product> products, Context context) {
-        this.products = products;
-        this.context = context;
+public class ProductAdapter extends BaseAdapter{
+    private Context context;
+    private  int layout;
+    private List<>
+    @Override
+    public int getCount() {
+        return 0;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Object getItem(int i) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    public long getItemId(int i) {
+        return 0;
     }
 
     @Override
-    public int getItemCount() {
-        return products.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtName;
-        ImageView img;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-//            txtName = (TextView) itemView.findViewById(R.id.txtName)
-        }
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return null;
     }
 }
