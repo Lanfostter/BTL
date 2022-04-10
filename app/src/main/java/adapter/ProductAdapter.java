@@ -1,62 +1,51 @@
 package adapter;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.btl.R;
+
+import java.util.ArrayList;
 
 import model.Product;
 
-public class ProductAdapter extends BaseAdapter {
-    private Context context;
-    private int layout;
-    private List<Product> products;
-    private String img;
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+    ArrayList<Product> products;
+    Context context;
 
-    public ProductAdapter(Context context, int layout, List<Product> products, String img) {
-        this.context = context;
-        this.layout = layout;
+    public ProductAdapter(ArrayList<Product> products, Context context) {
         this.products = products;
-        this.img = img;
+        this.context = context;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
         return products.size();
     }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-
-    private class ViewHolder {
-        TextView textView;
-        ImageView imgDelete, imgEdit;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder;
-        if(view == null)
-        {
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(layout, null);
-//            viewHolder.textView = (TextView) view.findViewById(R.id.);
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView txtName;
+        ImageView img;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+//            txtName = (TextView) itemView.findViewById(R.id.txtName)
         }
-        return null;
     }
 }

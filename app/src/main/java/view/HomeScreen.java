@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
@@ -25,9 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapter.MenuAdapter;
+import model.Product;
+import sqlite.Sqlite;
+import view.product.ListProduct;
 
 public class HomeScreen extends AppCompatActivity {
 
+    Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     Toolbar toolbar;
     ViewFlipper viewFlipper;
     RecyclerView recyclerViewTrangChu;
@@ -36,6 +41,8 @@ public class HomeScreen extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ArrayList<ItemMenu> arrayList;
     MenuAdapter adapter;
+    List<Product> products;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,11 @@ public class HomeScreen extends AppCompatActivity {
         ActionViewFlipper();
         ActionMenu();
         getEventClick();// tạo method
+        listView = findViewById(R.id.listview_item);
+        products = sqlite.getAllProduct();
+            ArrayAdapter adapter = new ArrayAdapter(HomeScreen.this, android.R.layout.simple_list_item_1, products);
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
     }
     // ánh xạ vao list
@@ -128,7 +140,6 @@ public class HomeScreen extends AppCompatActivity {
     private void Anhxa() {
         toolbar = findViewById(R.id.toolbartrangchu);
         viewFlipper = findViewById(R.id.viewflipper);
-        recyclerViewTrangChu = findViewById(R.id.recyclerview);
         listViewTrangChu = findViewById(R.id.listviewtrangchu);
         navigationView = findViewById(R.id.navigationview);
         drawerLayout = findViewById(R.id.drawerlayout);
