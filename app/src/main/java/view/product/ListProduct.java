@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -29,6 +30,7 @@ public class ListProduct extends AppCompatActivity {
     ArrayList<Product> products;
     ImageView imageView;
     ProductAdapter productAdapter;
+    Button deleteProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class ListProduct extends AppCompatActivity {
         lvproduct = findViewById(R.id.lv_product);
         products = sqlite.getAllProduct();
         lvproduct.setAdapter(new ProductAdapter(ListProduct.this, products));
+        deleteProduct =findViewById(R.id.)
     }
 
     @Override
