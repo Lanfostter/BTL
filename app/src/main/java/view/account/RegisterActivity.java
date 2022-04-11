@@ -1,7 +1,6 @@
 package view.account;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.database.sqlite.SQLiteDatabaseKt;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +14,6 @@ import com.example.btl.R;
 import model.Account;
 import sqlite.Sqlite;
 import view.HomeScreen;
-import view.product.AddProduct;
-import view.product.ListProduct;
 
 public class RegisterActivity extends AppCompatActivity {
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);

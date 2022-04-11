@@ -84,5 +84,4 @@ public class ProductAdapter extends BaseAdapter {
 //                .into((ImageView) viewProduct.findViewById(R.id.iv_product));
         return viewProduct;
     }
-
 }

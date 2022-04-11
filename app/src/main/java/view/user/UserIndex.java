@@ -1,4 +1,4 @@
-package view;
+package view.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,12 +23,17 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.account.LoginActivity;
+import view.Contact;
+import view.Infor;
+import view.ItemMenu;
+import view.LaptopList;
+import view.PhoneList;
+import view.ShoppingCart;
 import view.adapter.MenuAdapter;
 import model.Product;
 import sqlite.Sqlite;
 
-public class HomeScreen extends AppCompatActivity {
+public class UserIndex extends AppCompatActivity {
 
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     Toolbar toolbar;
@@ -52,7 +57,7 @@ public class HomeScreen extends AppCompatActivity {
         getEventClick();// tạo method
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
-        ArrayAdapter adapter = new ArrayAdapter(view.HomeScreen.this, android.R.layout.simple_list_item_1, products);
+        ArrayAdapter adapter = new ArrayAdapter(UserIndex.this, android.R.layout.simple_list_item_1, products);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -66,7 +71,7 @@ public class HomeScreen extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0:
-                        Intent trangchu = new Intent(getApplicationContext(), view.HomeScreen.class);
+                        Intent trangchu = new Intent(getApplicationContext(), UserIndex.class);
                         startActivity(trangchu);
                         break;
                     case 1:
@@ -86,8 +91,8 @@ public class HomeScreen extends AppCompatActivity {
                         startActivity(thongtin);
                         break;
                     case 5:
-                        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(login);
+                        Intent cart = new Intent(getApplicationContext(), ShoppingCart.class);
+                        startActivity(cart);
                         break;
                 }
             }
@@ -102,7 +107,8 @@ public class HomeScreen extends AppCompatActivity {
         arrayList.add(new ItemMenu("Laptop", R.drawable.laptop));
         arrayList.add(new ItemMenu("Contact", R.drawable.support));
         arrayList.add(new ItemMenu("Information", R.drawable.info));
-        arrayList.add(new ItemMenu("Login", R.drawable.login));
+        arrayList.add(new ItemMenu("Cart", R.drawable.cart));
+        arrayList.add(new ItemMenu("Logout", R.drawable.logout));
         adapter = new MenuAdapter(this, R.layout.item_rows, arrayList);
         listViewTrangChu.setAdapter(adapter);
     }
