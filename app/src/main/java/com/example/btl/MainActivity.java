@@ -2,6 +2,8 @@ package com.example.btl;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,15 +19,16 @@ import view.ShoppingCart;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale", null, 1);
     Button login, register, homescreen, addproduct, cart, listproduct;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SQLiteDatabase sqLiteDatabase = sqlite.getReadableDatabase();
+        sqlite.onCreate(sqLiteDatabase);
         login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
@@ -38,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         ClickCart();
         ClickList();
         AddProduct();
-        Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale", null, 1);
-        SQLiteDatabase sqLiteDatabase = sqlite.getReadableDatabase();
-        sqlite.onCreate(sqLiteDatabase);
     }
 
     //bắt sự kiện ShopingCart
@@ -74,5 +74,23 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
 
+    public void DialogDeleteProduct(String id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you want to delete this product ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                sqlite.deleteProduct(id);
+                sqlite.getAllProduct();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
+    }
 
 }

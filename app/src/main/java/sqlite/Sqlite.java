@@ -75,10 +75,10 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean deleteProduct(Product product) {
+    public int deleteProduct(String id) {
         SQLiteDatabase database = getReadableDatabase();
-        database.delete("Product", product.getId(), null);
-        return true;
+        database.delete("PRODUCT", "p_id = ?", new String[] {id});
+        return 1;
     }
 
     public ArrayList<Product> getAllProduct() {

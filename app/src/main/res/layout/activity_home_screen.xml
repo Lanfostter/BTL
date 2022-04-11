@@ -18,16 +18,10 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbartrangchu"
-<<<<<<< HEAD
-=======
-                app:title="Home"
-                android:background="#6287E4"
->>>>>>> bed4440f91cbd9e0d79d09872a65226680a15e8a
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#6287E4"
                 app:title="Trang chủ">
-
             </androidx.appcompat.widget.Toolbar>
 
             <ViewFlipper
