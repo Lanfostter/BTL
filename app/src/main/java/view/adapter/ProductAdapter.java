@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ import sqlite.Sqlite;
 import view.product.ListProduct;
 
 public class ProductAdapter extends BaseAdapter {
-    MainActivity context;
+    ListProduct context;
     Context mycontext;
     ArrayList<Product> products;
     LayoutInflater inflater;
@@ -69,11 +70,11 @@ public class ProductAdapter extends BaseAdapter {
         ((TextView) viewProduct.findViewById(R.id.priceproduct)).setText("Price: " + product.getPrice());
         ((TextView) viewProduct.findViewById(R.id.quantity)).setText("Quantity: " + String.valueOf(product.getQuantity()));
         delete = (Button) viewProduct.findViewById(R.id.bt_delete);
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String value = product.getId();
-                context.DialogDeleteProduct(value);
+                context.DialogDeleteProduct(product.getName() ,product.getId());
             }
         });
 //        Uri uri = Uri.parse(product.getImage());

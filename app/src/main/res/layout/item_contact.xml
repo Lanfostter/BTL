@@ -47,14 +47,14 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/bt_delete"
+            android:id="@+id/bt_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:text="Sửa" />
 
         <Button
-            android:id="@+id/bt_update"
+            android:id="@+id/bt_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"

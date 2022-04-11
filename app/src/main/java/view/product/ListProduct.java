@@ -1,9 +1,12 @@
 package view.product;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -46,6 +49,27 @@ public class ListProduct extends AppCompatActivity {
 
     }
 
+    public void DialogDeleteProduct(String name, String id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you want to delete this product ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.e("id" + id, "ngu");
+
+                sqlite.queryData("DELETE FROM PRODUCT WHERE P_ID LIKE '" + id + "'");
+                sqlite.getAllProduct();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -59,6 +83,14 @@ public class ListProduct extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    private void GetDataProduct(){
+        Cursor dataProduct = sqlite.getData("SELECT * FROM PRODUCT");
+        products.clear();
+        while (dataProduct.moveToNext()){
+            String id = dataProduct.getString(1);
+            
         }
     }
 }
