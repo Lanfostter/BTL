@@ -49,16 +49,14 @@ public class ListProduct extends AppCompatActivity {
 
     }
 
-    public void DialogDeleteProduct(String name, String id) {
+    public void DialogDeleteProduct(String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Do you want to delete this product ?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.e("id" + id, "ngu");
-
                 sqlite.queryData("DELETE FROM PRODUCT WHERE P_ID LIKE '" + id + "'");
-                sqlite.getAllProduct();
+//                sqlite.getAllProduct();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -85,12 +83,6 @@ public class ListProduct extends AppCompatActivity {
             }
         }
     }
-    private void GetDataProduct(){
-        Cursor dataProduct = sqlite.getData("SELECT * FROM PRODUCT");
-        products.clear();
-        while (dataProduct.moveToNext()){
-            String id = dataProduct.getString(1);
-            
-        }
-    }
+
+
 }
