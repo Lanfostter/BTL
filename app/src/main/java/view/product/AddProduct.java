@@ -22,6 +22,7 @@ import com.example.btl.R;
 import sqlite.Sqlite;
 
 import java.io.File;
+import java.io.IOException;
 
 import model.Product;
 
@@ -29,16 +30,6 @@ public class AddProduct extends AppCompatActivity {
     Button add, gallery;
     Product product = new Product();
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
-    private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        Intent intent = result.getData();
-                        String strResult = intent.getStringExtra("data_result");
-                    }
-                }
-            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +54,17 @@ public class AddProduct extends AppCompatActivity {
 
     }
 
+    private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent intent = result.getData();
+                        String strResult = intent.getStringExtra("data_result");
+                    }
+                }
+            });
+    //  lấy uri của ảnh
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -70,6 +72,7 @@ public class AddProduct extends AppCompatActivity {
             Uri selectImage = data.getData();
             ImageView imageView = (ImageView) findViewById(R.id.img_product);
             imageView.setImageURI(selectImage);
+            // lấy địa chỉ url
             File file = new File(selectImage.getPath());
             product.setImage(file.getPath());
         }

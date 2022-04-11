@@ -5,33 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="view.HomeScreen">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbartrangchu"
-                app:title="Trang chủ"
-                android:background="#6287E4"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="?attr/actionBarSize"
+                android:background="#6287E4"
+                app:title="Trang chủ">
 
             </androidx.appcompat.widget.Toolbar>
+
             <ViewFlipper
                 android:id="@+id/viewflipper"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
             </ViewFlipper>
+
             <LinearLayout
-                android:background="#62C5C5"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#62C5C5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -41,21 +52,25 @@
                     android:textColor="#B71C1C"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <ListView
                     android:id="@+id/listview_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
             </LinearLayout>
         </LinearLayout>
+
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationview"
-            android:layout_gravity="start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
             <ListView
                 android:id="@+id/listviewtrangchu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 

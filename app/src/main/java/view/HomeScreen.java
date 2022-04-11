@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -25,17 +23,15 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.MenuAdapter;
+import view.adapter.MenuAdapter;
 import model.Product;
 import sqlite.Sqlite;
-import view.product.ListProduct;
 
 public class HomeScreen extends AppCompatActivity {
 
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     Toolbar toolbar;
     ViewFlipper viewFlipper;
-    RecyclerView recyclerViewTrangChu;
     NavigationView navigationView;
     ListView listViewTrangChu;
     DrawerLayout drawerLayout;
@@ -55,31 +51,33 @@ public class HomeScreen extends AppCompatActivity {
         getEventClick();// tạo method
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
-            ArrayAdapter adapter = new ArrayAdapter(HomeScreen.this, android.R.layout.simple_list_item_1, products);
-            listView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+        ArrayAdapter adapter = new ArrayAdapter(HomeScreen.this, android.R.layout.simple_list_item_1, products);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
 
     }
+
     // ánh xạ vao list
     private void getEventClick() {
         listViewTrangChu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
+                switch (i) {
                     case 0:
                         Intent trangchu = new Intent(getApplicationContext(), HomeScreen.class);
                         startActivity(trangchu);
                         break;
                     case 1:
-                        Intent dienthoai= new Intent(getApplicationContext(), PhoneList.class);
+                        Intent dienthoai = new Intent(getApplicationContext(), PhoneList.class);
                         startActivity(dienthoai);
                         break;
                     case 2:
-                        Intent laptop= new Intent(getApplicationContext(), LaptopList.class);
+                        Intent laptop = new Intent(getApplicationContext(), LaptopList.class);
                         startActivity(laptop);
                         break;
                     case 3:
-                        Intent lienhe= new Intent(getApplicationContext(), Contact.class);
+                        Intent lienhe = new Intent(getApplicationContext(), Contact.class);
                         startActivity(lienhe);
                         break;
                     case 4:
@@ -110,7 +108,7 @@ public class HomeScreen extends AppCompatActivity {
         mangquangcao.add("https://cdn.cellphones.com.vn/media/ltsoft/promotion/S22_uLTRA.png");
         mangquangcao.add("https://cdn.cellphones.com.vn/media/ltsoft/promotion/Note_11_pro_plus.png");
         mangquangcao.add("https://cdn.cellphones.com.vn/media/ltsoft/promotion/TV.png");
-        for (int i = 0; i < mangquangcao.size(); i++){
+        for (int i = 0; i < mangquangcao.size(); i++) {
             ImageView imageView = new ImageView(getApplicationContext());
             Glide.with(getApplicationContext()).load(mangquangcao.get(i)).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);

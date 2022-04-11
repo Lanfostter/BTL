@@ -81,9 +81,9 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public List<Product> getAllProduct() {
+    public ArrayList<Product> getAllProduct() {
         SQLiteDatabase database = getReadableDatabase();
-        List<Product> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
         products.clear();
         Cursor cursor = database.query("product", allColumns, null,
                 null, null, null, null);
