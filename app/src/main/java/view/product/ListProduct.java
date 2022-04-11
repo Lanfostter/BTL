@@ -45,27 +45,7 @@ public class ListProduct extends AppCompatActivity {
 
         lvproduct = findViewById(R.id.lv_product);
         products = sqlite.getAllProduct();
-        lvproduct.setAdapter(new ProductAdapter(ListProduct.this, products));
-
-    }
-
-    public void DialogDeleteProduct(String id) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do you want to delete this product ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                sqlite.queryData("DELETE FROM PRODUCT WHERE P_ID LIKE '" + id + "'");
-//                sqlite.getAllProduct();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
+        lvproduct.setAdapter(new ProductAdapter(ListProduct.this, R.layout.item_contact, products));
     }
 
     @Override
@@ -84,5 +64,27 @@ public class ListProduct extends AppCompatActivity {
         }
     }
 
+    public void DialogDeleteProduct(String id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you want to delete this product ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                sqlite.queryData("DELETE FROM PRODUCT WHERE P_ID LIKE '" + id + "'");
+                sqlite.getAllProduct();
+                startActivity(new Intent(ListProduct.this, ListProduct.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        builder.show();
+    }
+
+    public void EditProduct(String id) {
+
+    }
 }

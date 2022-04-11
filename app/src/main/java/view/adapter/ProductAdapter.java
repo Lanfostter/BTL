@@ -1,45 +1,40 @@
 package view.adapter;
 
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
 import com.example.btl.MainActivity;
 import com.example.btl.R;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
 
 import model.Product;
-import sqlite.Sqlite;
 import view.product.ListProduct;
 
 public class ProductAdapter extends BaseAdapter {
     ListProduct context;
-    Context mycontext;
+    int layout;
     ArrayList<Product> products;
-    LayoutInflater inflater;
-    Button delete;
+//    LayoutInflater inflater;
+//    Button delete;
 
-    public ProductAdapter(Context mycontext, ArrayList<Product> products) {
-        this.mycontext = mycontext;
+
+    public ProductAdapter(ListProduct context, int layout, ArrayList<Product> products) {
+        this.context = context;
+        this.layout = layout;
         this.products = products;
-        inflater = LayoutInflater.from(mycontext);
     }
 
     @Override
@@ -57,35 +52,52 @@ public class ProductAdapter extends BaseAdapter {
         return Integer.parseInt(products.get(i).getId());
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        //convertView là View của phần tử ListView, nếu convertView != null nghĩa là
-        //View này được sử dụng lại, chỉ việc cập nhật nội dung mới
-        //Nếu null cần tạo mới
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_contact, parent, false);
-        }
-        //Bind sữ liệu phần tử vào View
-        Product product = (Product) getItem(position);
-        ((TextView) convertView.findViewById(R.id.idproduct)).setText("ID: " + product.getId());
-        ((TextView) convertView.findViewById(R.id.nameproduct)).setText("Name: " + product.getName());
-        ((TextView) convertView.findViewById(R.id.priceproduct)).setText("Price: " + product.getPrice());
-        ((TextView) convertView.findViewById(R.id.quantity)).setText("Quantity: " + String.valueOf(product.getQuantity()));
-        delete = (Button) convertView.findViewById(R.id.bt_delete);
-        Log.e("hello" + convertView, "đâ");
-
-        delete.setOnClickListener(view -> {
-            context.DialogDeleteProduct(product.getId());
-            notifyDataSetChanged();
-        });
-//        Uri uri = Uri.parse(product.getImage());
-//        Glide
-//                .with(viewProduct)
-//                .load(uri.getPath())
-//                .into((ImageView) viewProduct.findViewById(R.id.iv_product));
-        return convertView;
-
-
+    private class ViewHolder {
+        TextView txt_id, txt_name, txt_quantity, txt_price;
+        ImageView iv_product;
+        Button delete, edit;
     }
 
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+
+        if(view == null){
+            holder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(layout,null);
+            holder.txt_id = (TextView) view.findViewById(R.id.idproduct);
+            holder.txt_name= (TextView) view.findViewById(R.id.nameproduct);
+            holder.iv_product = (ImageView) view.findViewById(R.id.iv_product16);
+            holder.txt_quantity = (TextView) view.findViewById(R.id.quantityproduct);
+            holder.txt_price= (TextView) view.findViewById(R.id.priceproduct);
+            holder.delete= (Button) view.findViewById(R.id.bt_delete);
+            holder.edit= (Button) view.findViewById(R.id.bt_update);
+            view.setTag(holder);
+        }else {
+            holder = (ViewHolder) view.getTag();
+        }
+
+        Product product = (Product) getItem(i);
+        holder.txt_id.setText(product.getId());
+        holder.txt_name.setText(product.getName());
+        holder.txt_price.setText(product.getPrice());
+        holder.txt_quantity.setText(String.valueOf(product.getQuantity()));
+        holder.iv_product.setImageURI(Uri.parse(product.getImage()));
+//        Bắt sự kiện sửa và xoá
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.EditProduct(product.getId());
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.DialogDeleteProduct(product.getId());
+                notifyDataSetChanged();
+            }
+        });
+        return view;
+    }
 }
