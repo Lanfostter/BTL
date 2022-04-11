@@ -18,6 +18,11 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbartrangchu"
+<<<<<<< HEAD
+=======
+                app:title="Home"
+                android:background="#6287E4"
+>>>>>>> bed4440f91cbd9e0d79d09872a65226680a15e8a
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#6287E4"
@@ -48,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/s_n_ph_m_m_i"
+                    android:text="All Product"
                     android:textColor="#B71C1C"
                     android:textSize="20sp"
                     android:textStyle="bold" />
