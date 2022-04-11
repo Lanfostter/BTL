@@ -36,16 +36,16 @@ public class LoginActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if(user.equals("")||pass.equals(""))
-                    Toast.makeText(LoginActivity.this, "Please enter all the fields", Toast.LENGTH_LONG);
-                else {
-                    Boolean checker = sqlite.checker(user, pass);
+                if(user.equals("")||pass.equals("")) {
+                    Toast.makeText(LoginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean checker = sqlite.checker(user, pass);
                     if (checker==true){
-                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG);
-                        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
                         startActivity(intent);
                     } else{
-                        Toast.makeText(LoginActivity.this, "Invalid account",Toast.LENGTH_LONG);
+                        Toast.makeText(LoginActivity.this, "Invalid account",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

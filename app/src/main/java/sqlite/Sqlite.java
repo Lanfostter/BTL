@@ -165,7 +165,8 @@ public class Sqlite extends SQLiteOpenHelper {
 
     public Boolean checker(String username, String password) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username = ? and u_password = ?", new String[] {username,password});
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username like ? and u_password like ?", new String[] {username,password});
+        Log.e("dangu" + cursor.getCount(), "da ngu vl");
         if (cursor.getCount()>0)
             return true;
         else
