@@ -163,4 +163,13 @@ public class Sqlite extends SQLiteOpenHelper {
         return account;
     }
 
+    public Boolean checker(String username, String password) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username = ? and u_password = ?", new String[] {username,password});
+        if (cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
 }
