@@ -5,9 +5,9 @@ public class Product {
     private String name;
     private int quantity;
     private String price;
-    private String image;
+    private byte[] image;
 
-    public Product(String id, String name, int quantity, String price, String image) {
+    public Product(String id, String name, int quantity, String price, byte[] image) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -50,11 +50,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

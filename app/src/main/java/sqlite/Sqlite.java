@@ -27,7 +27,7 @@ public class Sqlite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) PRIMARY KEY, p_name VARCHAR(50)," +
-                "p_quantity INTEGER, p_price VARCHAR(50), p_img VARCHAR(255))");
+                "p_quantity INTEGER, p_price VARCHAR(50), p_img BLOB)");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ACCOUNT(u_id INTEGER PRIMARY KEY, u_username VARCHAR(50), " +
                 "u_password VARCHAR(50), u_role VARCHAR(50))");
     }
@@ -62,15 +62,16 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean updateProduct(Product product) {
+    public boolean updateProduct(Product product, String id) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put("p_id", product.getId());
         contentValues.put("p_name", product.getName());
         contentValues.put("p_quantity", product.getQuantity());
         contentValues.put("p_price", product.getPrice());
         contentValues.put("p_img", product.getImage());
         database.update("product", contentValues,
-                product.getId(), null);
+               "p_id = ?", new String[]{id});
         database.close();
         return true;
     }
@@ -104,7 +105,7 @@ public class Sqlite extends SQLiteOpenHelper {
         product.setName(cursor.getString(1));
         product.setQuantity(cursor.getInt(2));
         product.setPrice(cursor.getString(3));
-        product.setImage(cursor.getString(4));
+        product.setImage(cursor.getBlob(4));
         return product;
     }
 

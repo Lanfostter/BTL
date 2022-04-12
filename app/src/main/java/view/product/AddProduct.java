@@ -8,8 +8,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -18,11 +21,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.btl.R;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.IOUtils;
 
 import sqlite.Sqlite;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import model.Product;
 
@@ -54,27 +60,34 @@ public class AddProduct extends AppCompatActivity {
 
     }
 
-    private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
                         Intent intent = result.getData();
-                        String strResult = intent.getStringExtra("data_result");
                     }
                 }
             });
+
     //  lấy uri của ảnh
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Uri selectImage = data.getData();
         if (resultCode == RESULT_OK && data != null) {
-            Uri selectImage = data.getData();
             ImageView imageView = (ImageView) findViewById(R.id.img_product);
-            imageView.setImageURI(selectImage);
-            // lấy địa chỉ url
-            File file = new File(selectImage.getPath());
-            product.setImage(file.getPath());
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(selectImage);
+                byte[] bytes = IOUtils.toByteArray(inputStream);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                imageView.setImageBitmap(bitmap);
+                product.setImage(bytes);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
