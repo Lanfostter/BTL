@@ -134,15 +134,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-       app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
+        android:id="@+id/btn_dathang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/holo_blue_bright"
         android:text="Đặt hàng"
-        android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="9dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

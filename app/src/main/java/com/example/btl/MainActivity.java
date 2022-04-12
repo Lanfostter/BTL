@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         AddProduct();
     }
 
+
+
     //bắt sự kiện ShopingCart
     private void ClickCart() {
         cart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShoppingCart.class)));// chuyen trang Cart
@@ -52,9 +54,8 @@ public class MainActivity extends AppCompatActivity {
         listproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ListProduct.class)));
 
     }
+    
 
-
-    //bắt sự kiện homescreen
     private void AddProduct() {
         addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
     }
