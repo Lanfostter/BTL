@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.Contact;
+import view.HomeScreen;
 import view.Infor;
 import view.ItemMenu;
 import view.LaptopList;
@@ -93,6 +94,10 @@ public class UserIndex extends AppCompatActivity {
                     case 5:
                         Intent cart = new Intent(getApplicationContext(), ShoppingCart.class);
                         startActivity(cart);
+                        break;
+                    case 6:
+                        Intent logout = new Intent(getApplicationContext(), HomeScreen.class);
+                        startActivity(logout);
                         break;
                 }
             }

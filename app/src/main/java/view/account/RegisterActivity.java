@@ -35,12 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
                         password.getText().toString(), role.getText().toString());
                 sqlite.insertAccount(newaccound);
                 if (sqlite.insertAccount(newaccound) == true) {
-                    Toast toast = Toast.makeText(RegisterActivity.this, "Thêm thành công", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG);
                     toast.show();
-                    Intent intent = new Intent(RegisterActivity.this, HomeScreen.class);
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast toast = Toast.makeText(RegisterActivity.this, "Thêm thất bại", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }

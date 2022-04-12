@@ -13,13 +13,14 @@ import com.example.btl.R;
 
 import sqlite.Sqlite;
 import view.HomeScreen;
+import view.user.UserIndex;
 
 public class LoginActivity extends AppCompatActivity {
 
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
 
     EditText username, password;
-    Button btnlogin;
+    Button btnlogin, btnregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.editText_username);
         password = (EditText)  findViewById(R.id.editText_password);
         btnlogin = (Button) findViewById(R.id.btn_sign_in);
+        btnregister = (Button) findViewById(R.id.btn_sign_up);
+        ClickSignup();
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     boolean checker = sqlite.checker(user, pass);
                     if (checker==true){
                         Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
+                        Intent intent = new Intent(LoginActivity.this, UserIndex.class);
                         startActivity(intent);
                     } else{
                         Toast.makeText(LoginActivity.this, "Invalid account",Toast.LENGTH_SHORT).show();
@@ -50,5 +54,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void ClickSignup() {
+        btnregister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 }

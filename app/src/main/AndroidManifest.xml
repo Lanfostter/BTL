@@ -41,6 +41,9 @@
             android:name="view.product.AddProduct"
             android:exported="false" />
         <activity
+            android:name="view.user.UserIndex"
+            android:exported="false"/>
+        <activity
             android:name="view.HomeScreen"
             android:exported="false" />
         <activity
