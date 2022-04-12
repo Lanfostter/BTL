@@ -11,7 +11,7 @@
         android:id="@+id/idproduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1" />
+        android:text="Id" />
 
     <TextView
         android:id="@+id/nameproduct"
@@ -42,22 +42,22 @@
 
         <ImageView
             android:id="@+id/iv_product16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
             android:id="@+id/bt_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
+            android:layout_marginLeft="50dp"
             android:text="Sửa" />
 
         <Button
             android:id="@+id/bt_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:text="Xóa" />
     </LinearLayout>
 

@@ -79,12 +79,11 @@ public class ProductAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         Product product = (Product) getItem(i);
-        holder.txt_id.setText(product.getId());
-        holder.txt_name.setText(product.getName());
-        holder.txt_price.setText(product.getPrice());
-        holder.txt_quantity.setText(String.valueOf(product.getQuantity()));
+        holder.txt_id.setText("ID: " + product.getId());
+        holder.txt_name.setText("Name: " + product.getName());
+        holder.txt_price.setText("Price" + product.getPrice());
+        holder.txt_quantity.setText("Quantity: " + String.valueOf(product.getQuantity()));
         // lấy ảnh từ cơ sở dữ liệu
-
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         holder.iv_product.setImageBitmap(bitmap);
         holder.edit.setOnClickListener(view12 -> context.EditProduct(product.getId()));
