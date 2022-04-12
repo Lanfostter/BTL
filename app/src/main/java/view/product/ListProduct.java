@@ -28,11 +28,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.btl.R;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.IOUtils;
 
 import sqlite.Sqlite;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -43,9 +45,10 @@ public class ListProduct extends AppCompatActivity {
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     ListView lvproduct;
     ArrayList<Product> products;
-    ImageView imageView;
+    ImageView imageView, updateview;
     Product product = new Product();
     Button upload;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,21 +57,8 @@ public class ListProduct extends AppCompatActivity {
         products = sqlite.getAllProduct();
         lvproduct.setAdapter(new ProductAdapter(ListProduct.this, R.layout.item_contact, products));
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            products = sqlite.getAllProduct();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
-                imageView.setImageBitmap(bitmap);
-        }
-//        Uri selectImage = data.getData();
-//        ImageView imageView1 = (ImageView) findViewById(R.id.img_product);
-//        imageView1.setImageURI(selectImage);
-//        // lấy địa chỉ url
-//        File file = new File(selectImage.getPath());
-//        product.setImage(file.getPath());
-    }
+
+
     public void DialogDeleteProduct(String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Do you want to delete this product ?");
@@ -81,16 +71,17 @@ public class ListProduct extends AppCompatActivity {
         });
         builder.show();
     }
+
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
                         Intent intent = result.getData();
-                        String strResult = intent.getStringExtra("data_result");
                     }
                 }
             });
+
     public void EditProduct(String id) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.activity_update_product);
@@ -100,7 +91,7 @@ public class ListProduct extends AppCompatActivity {
         EditText name = (EditText) dialog.findViewById(R.id.update_name);
         EditText quantity = (EditText) dialog.findViewById(R.id.update_quantity);
         EditText price = (EditText) dialog.findViewById(R.id.update_price);
-
+        updateview = (ImageView) dialog.findViewById(R.id.update_img_product);
         upload = (Button) dialog.findViewById(R.id.btn_update_upload_image);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +107,29 @@ public class ListProduct extends AppCompatActivity {
                 Product updateproduct = new Product(pid.getText().toString(), name.getText().toString()
                         , Integer.parseInt(quantity.getText().toString()), price.getText().toString(), product.getImage());
                 sqlite.updateProduct(updateproduct, id);
+                Intent intent = new Intent(ListProduct.this, ListProduct.class);
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri selectImage = data.getData();
+        if (resultCode == RESULT_OK && data != null) {
+            ImageView imageView = (ImageView) findViewById(R.id.img_product);
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(selectImage);
+                byte[] bytes = IOUtils.toByteArray(inputStream);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                updateview.setImageBitmap(bitmap);
+                product.setImage(bytes);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
