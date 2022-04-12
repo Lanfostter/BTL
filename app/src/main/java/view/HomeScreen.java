@@ -1,11 +1,14 @@
 package view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.account.LoginActivity;
+import view.adapter.ListProductAdapter;
 import view.adapter.MenuAdapter;
 import model.Product;
 import sqlite.Sqlite;
@@ -40,6 +44,8 @@ public class HomeScreen extends AppCompatActivity {
     MenuAdapter adapter;
     List<Product> products;
     ListView listView;
+    Product product = new Product();
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +58,18 @@ public class HomeScreen extends AppCompatActivity {
         getEventClick();// tạo method
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
-        ArrayAdapter adapter = new ArrayAdapter(view.HomeScreen.this, android.R.layout.simple_list_item_1, products);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item,products));
 
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            products = sqlite.getAllProduct();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(),0, product.getImage().length);
+            imageView.setImageBitmap(bitmap);
+        }
     }
 
     // ánh xạ vao list
