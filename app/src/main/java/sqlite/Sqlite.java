@@ -30,7 +30,7 @@ public class Sqlite extends SQLiteOpenHelper {
                 "p_quantity INTEGER, p_price VARCHAR(50), p_img BLOB)");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ACCOUNT(u_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, u_username VARCHAR(50), " +
                 "u_password VARCHAR(50), u_role VARCHAR(50))");
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS CART(C_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, )");
+//        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS CART(C_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, )");
     }
 
     @Override

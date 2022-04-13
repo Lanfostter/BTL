@@ -53,6 +53,7 @@ public class AddProduct extends AppCompatActivity {
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // lấy ảnh từ thư viện ảnh của điện thoại
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 mActivityResultLauncher.launch(intent);
             }
@@ -60,6 +61,7 @@ public class AddProduct extends AppCompatActivity {
 
     }
 
+    // thay thế cho hàm startActivityForResult()
     private final ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -70,7 +72,7 @@ public class AddProduct extends AppCompatActivity {
                 }
             });
 
-    //  lấy uri của ảnh
+    //  lấy byte của ảnh
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -79,7 +81,9 @@ public class AddProduct extends AppCompatActivity {
             ImageView imageView = (ImageView) findViewById(R.id.img_product);
             try {
                 InputStream inputStream = getContentResolver().openInputStream(selectImage);
+                // chuyển đổi inputeSream thành dạng byte
                 byte[] bytes = IOUtils.toByteArray(inputStream);
+                // chuyển dạng byte thành bitmap
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 imageView.setImageBitmap(bitmap);
                 product.setImage(bytes);

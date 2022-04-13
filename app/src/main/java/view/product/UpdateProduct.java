@@ -52,6 +52,7 @@ public class UpdateProduct extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // lấy ảnh từ thư viện của điện thoại
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 mActivityResultLauncher.launch(intent);
             }
@@ -95,6 +96,7 @@ public class UpdateProduct extends AppCompatActivity {
         }
     }
 
+    // thay thế cho hàm startActivityForResult()
     private final ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override

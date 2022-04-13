@@ -40,7 +40,7 @@ public class MenuAdapter extends BaseAdapter {
         return 0;
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         TextView tv;
         ImageView img;
     }
@@ -49,8 +49,9 @@ public class MenuAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         ViewHolder viewHolder = null;
-        if (view == null){
+        if (view == null) {
             viewHolder = new ViewHolder();
+            // chuyển layout file (xml) thành dạng view
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.item_rows, null);
 

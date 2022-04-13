@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import security.SessionManager;
 import view.account.LoginActivity;
 import view.adapter.ListProductAdapter;
 import view.adapter.MenuAdapter;
@@ -35,7 +36,7 @@ import model.Product;
 import sqlite.Sqlite;
 
 public class HomeScreen extends AppCompatActivity {
-
+    SessionManager sessionManager;
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     Toolbar toolbar;
     ViewFlipper viewFlipper;
@@ -63,7 +64,6 @@ public class HomeScreen extends AppCompatActivity {
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
         listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item, products));
-
     }
 
     @Override
@@ -164,9 +164,14 @@ public class HomeScreen extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
     }
 
-    public void ViewProduct(String id) {
+    public void viewProduct(String id) {
         Product.takeid = id;
         Intent intent = new Intent(this, ProductDetail.class);
+        startActivity(intent);
+    }
+    public void addToCart(String id){
+        Product.takeid = id;
+        Intent intent = new Intent(this, ShoppingCart.class);
         startActivity(intent);
     }
 }

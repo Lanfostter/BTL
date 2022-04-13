@@ -55,7 +55,7 @@ public class ListProduct extends AppCompatActivity {
     }
 
 
-    public void DialogDeleteProduct(String id) {
+    public void dialogDeleteProduct(String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Do you want to delete this product ?");
         builder.setPositiveButton("Yes", (dialogInterface, i) -> {
@@ -69,7 +69,7 @@ public class ListProduct extends AppCompatActivity {
     }
 
 
-    public void EditProduct(String id) {
+    public void editProduct(String id) {
         Product.takeid = id;
         Intent intent = new Intent(this, UpdateProduct.class);
         startActivity(intent);

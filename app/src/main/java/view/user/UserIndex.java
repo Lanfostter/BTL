@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import security.SessionManager;
 import view.Contact;
 import view.HomeScreen;
 import view.Infor;
@@ -35,7 +36,7 @@ import model.Product;
 import sqlite.Sqlite;
 
 public class UserIndex extends AppCompatActivity {
-
+    SessionManager sessionManager;
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     Toolbar toolbar;
     ViewFlipper viewFlipper;
@@ -97,6 +98,7 @@ public class UserIndex extends AppCompatActivity {
                         break;
                     case 6:
                         Intent logout = new Intent(getApplicationContext(), HomeScreen.class);
+                        sessionManager.logoutUser();
                         startActivity(logout);
                         break;
                 }

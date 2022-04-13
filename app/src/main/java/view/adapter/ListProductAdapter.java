@@ -16,6 +16,7 @@ import com.example.btl.R;
 import java.util.List;
 
 import model.Product;
+import security.SessionManager;
 import view.HomeScreen;
 
 public class ListProductAdapter extends BaseAdapter {
@@ -53,17 +54,17 @@ public class ListProductAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView txtName, txtPrice;
         ImageView iv_product;
-        Button addtocart;
+        Button view;
+        Button addcart;
 
     }
 
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
         ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
+            // chuyển layout file (xml) thành dạng view
             LayoutInflater inflater = (LayoutInflater) homeScreen.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtName = (TextView) view.findViewById(R.id.p_name1);
@@ -76,16 +77,15 @@ public class ListProductAdapter extends BaseAdapter {
         Product product = (Product) getItem(i);
         holder.txtName.setText("Name: " + product.getName());
         holder.txtPrice.setText("Price: " + product.getPrice());
-
+        // chuyển ảnh từ dạng byte sang bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
+        // lấy ảnh dưới dạng bitmap gán vào imageview
         holder.iv_product.setImageBitmap(bitmap);
-        holder.addtocart = (Button) view.findViewById(R.id.btn_view);
-        holder.addtocart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                homeScreen.ViewProduct(product.getId());
-            }
-        });
+        holder.view = (Button) view.findViewById(R.id.btn_view);
+        holder.view.setOnClickListener(view12 -> homeScreen.viewProduct(product.getId()));
+        holder.addcart = (Button) view.findViewById(R.id.btn_add);
+        holder.addcart.setOnClickListener(view1 -> homeScreen.addToCart(product.getId()));
+
         return view;
     }
 }

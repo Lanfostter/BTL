@@ -64,6 +64,7 @@ public class ProductAdapter extends BaseAdapter {
         ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
+            // chuyển layout file (xml) thành dạng view
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txt_id = (TextView) view.findViewById(R.id.idproduct);
@@ -86,11 +87,11 @@ public class ProductAdapter extends BaseAdapter {
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         holder.iv_product.setImageBitmap(bitmap);
         holder.edit.setOnClickListener(view12 -> {
-            context.EditProduct(product.getId());
+            context.editProduct(product.getId());
             notifyDataSetChanged();
         });
         holder.delete.setOnClickListener(view1 -> {
-            context.DialogDeleteProduct(product.getId());
+            context.dialogDeleteProduct(product.getId());
             notifyDataSetChanged();
         });
         return view;
