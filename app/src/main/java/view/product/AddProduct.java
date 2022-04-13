@@ -93,26 +93,23 @@ public class AddProduct extends AppCompatActivity {
     }
 
     private void insertProduct() {
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText id = (EditText) findViewById(R.id.edit_txt_id);
-                EditText name = (EditText) findViewById(R.id.edit_txt_name);
-                EditText quantity = (EditText) findViewById(R.id.edit_txt_quantity);
-                EditText price = (EditText) findViewById(R.id.edit_txt_price);
-                Product newproduct = new Product(id.getText().toString(),
-                        name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
-                        price.getText().toString(), product.getImage());
-                sqlite.insertProduct(newproduct);
-                if (sqlite.insertProduct(newproduct) == true) {
-                    Toast toast = Toast.makeText(AddProduct.this, "Thêm thành công", Toast.LENGTH_LONG);
-                    toast.show();
-                    Intent intent = new Intent(AddProduct.this, ListProduct.class);
-                    startActivity(intent);
-                } else {
-                    Toast toast = Toast.makeText(AddProduct.this, "Thêm thất bại", Toast.LENGTH_LONG);
-                    toast.show();
-                }
+        add.setOnClickListener(view -> {
+            EditText id = (EditText) findViewById(R.id.edit_txt_id);
+            EditText name = (EditText) findViewById(R.id.edit_txt_name);
+            EditText quantity = (EditText) findViewById(R.id.edit_txt_quantity);
+            EditText price = (EditText) findViewById(R.id.edit_txt_price);
+            Product newproduct = new Product(id.getText().toString(),
+                    name.getText().toString(), Integer.parseInt(quantity.getText().toString()),
+                    price.getText().toString(), product.getImage());
+            sqlite.insertProduct(newproduct);
+            if (sqlite.insertProduct(newproduct) == true) {
+                Toast toast = Toast.makeText(AddProduct.this, "Thêm thành công", Toast.LENGTH_LONG);
+                toast.show();
+                Intent intent = new Intent(AddProduct.this, ListProduct.class);
+                startActivity(intent);
+            } else {
+                Toast toast = Toast.makeText(AddProduct.this, "Thêm thất bại", Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }

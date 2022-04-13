@@ -62,20 +62,15 @@ public class UpdateProduct extends AppCompatActivity {
             public void onClick(View view) {
                 Product updateproduct = new Product(id.getText().toString(), name.getText().toString()
                         , Integer.parseInt(quantity.getText().toString()), price.getText().toString(), product.getImage());
-                if (id.getText().equals("") || name.getText().equals("")|| quantity.getText().equals("")||price.getText().equals("")|| product.getImage().equals("")) {
-                    if (sqlite.updateProduct(updateproduct, id.getText().toString())) {
-                        Toast toast = Toast.makeText(UpdateProduct.this, "Update success", Toast.LENGTH_LONG);
-                        toast.show();
-                        Intent intent = new Intent(UpdateProduct.this, ListProduct.class);
-                        startActivity(intent);
-                    } else {
-                        Toast toast = Toast.makeText(UpdateProduct.this, "Update false", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-
+                if (sqlite.updateProduct(updateproduct, id.getText().toString())) {
+                    Toast toast = Toast.makeText(UpdateProduct.this, "Update success", Toast.LENGTH_LONG);
+                    toast.show();
+                    Intent intent = new Intent(UpdateProduct.this, ListProduct.class);
+                    startActivity(intent);
+                } else {
+                    Toast toast = Toast.makeText(UpdateProduct.this, "Update false", Toast.LENGTH_LONG);
+                    toast.show();
                 }
-
-
             }
         });
     }
