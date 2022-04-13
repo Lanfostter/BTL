@@ -66,4 +66,5 @@ public class Product {
                 "price = " + price + "\n" +
                 "image = " + image;
     }
+    public static String takeid = "";
 }

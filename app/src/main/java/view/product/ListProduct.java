@@ -45,9 +45,7 @@ public class ListProduct extends AppCompatActivity {
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     ListView lvproduct;
     ArrayList<Product> products;
-    ImageView imageView, updateview;
     Product product = new Product();
-    Button upload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,64 +70,11 @@ public class ListProduct extends AppCompatActivity {
         builder.show();
     }
 
-    private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        Intent intent = result.getData();
-                    }
-                }
-            });
 
     public void EditProduct(String id) {
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.activity_update_product);
-        dialog.show();
-        EditText pid = (EditText) dialog.findViewById(R.id.update_id);
-        pid.setText(id);
-        EditText name = (EditText) dialog.findViewById(R.id.update_name);
-        EditText quantity = (EditText) dialog.findViewById(R.id.update_quantity);
-        EditText price = (EditText) dialog.findViewById(R.id.update_price);
-        updateview = (ImageView) dialog.findViewById(R.id.update_img_product);
-        upload = (Button) dialog.findViewById(R.id.btn_update_upload_image);
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                mActivityResultLauncher.launch(intent);
-            }
-        });
-        Button update = (Button) dialog.findViewById(R.id.btn_update_product);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Product updateproduct = new Product(pid.getText().toString(), name.getText().toString()
-                        , Integer.parseInt(quantity.getText().toString()), price.getText().toString(), product.getImage());
-                sqlite.updateProduct(updateproduct, id);
-                Intent intent = new Intent(ListProduct.this, ListProduct.class);
-                startActivity(intent);
-            }
-        });
+        Product.takeid = id;
+        Intent intent = new Intent(this, UpdateProduct.class);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Uri selectImage = data.getData();
-        if (resultCode == RESULT_OK && data != null) {
-            ImageView imageView = (ImageView) findViewById(R.id.img_product);
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(selectImage);
-                byte[] bytes = IOUtils.toByteArray(inputStream);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                updateview.setImageBitmap(bitmap);
-                product.setImage(bytes);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

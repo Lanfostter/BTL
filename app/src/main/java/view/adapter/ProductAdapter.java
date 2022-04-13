@@ -86,7 +86,10 @@ public class ProductAdapter extends BaseAdapter {
         // lấy ảnh từ cơ sở dữ liệu
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         holder.iv_product.setImageBitmap(bitmap);
-        holder.edit.setOnClickListener(view12 -> context.EditProduct(product.getId()));
+        holder.edit.setOnClickListener(view12 -> {
+            context.EditProduct(product.getId());
+            notifyDataSetChanged();
+        });
         holder.delete.setOnClickListener(view1 -> {
             context.DialogDeleteProduct(product.getId());
             notifyDataSetChanged();

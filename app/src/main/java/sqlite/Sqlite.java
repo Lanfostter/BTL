@@ -71,14 +71,14 @@ public class Sqlite extends SQLiteOpenHelper {
         contentValues.put("p_price", product.getPrice());
         contentValues.put("p_img", product.getImage());
         database.update("product", contentValues,
-               "p_id = ?", new String[]{id});
+                "p_id = ?", new String[]{id});
         database.close();
         return true;
     }
 
     public int deleteProduct(String id) {
         SQLiteDatabase database = getReadableDatabase();
-        database.delete("PRODUCT", "p_id = ?", new String[] {id});
+        database.delete("PRODUCT", "p_id = ?", new String[]{id});
         return 1;
     }
 
@@ -152,6 +152,7 @@ public class Sqlite extends SQLiteOpenHelper {
     private boolean deleteAccount(Account account) {
         SQLiteDatabase database = getReadableDatabase();
         database.delete("ACCOUNT", String.valueOf(account.getId()), null);
+        database.close();
         return true;
     }
 
@@ -166,12 +167,14 @@ public class Sqlite extends SQLiteOpenHelper {
 
     public Boolean checker(String username, String password) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username like ? and u_password like ?", new String[] {username,password});
-        Log.e("dangu" + cursor.getCount(), "da ngu vl");
-        if (cursor.getCount()>0)
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username like ? and u_password like ?", new String[]{username, password});
+         if (cursor.getCount() > 0) {
+            sqLiteDatabase.close();
             return true;
-        else
+        } else {
+            sqLiteDatabase.close();
             return false;
+        }
     }
 
 }
