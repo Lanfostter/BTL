@@ -15,11 +15,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
+import com.example.btl.MainActivity;
 import com.example.btl.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,6 +49,7 @@ public class HomeScreen extends AppCompatActivity {
     Product product = new Product();
     ImageView imageView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,8 @@ public class HomeScreen extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
         ActionMenu();
-        getEventClick();// tạo method
+        getEventClick();
+
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
         listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item, products));
@@ -72,7 +76,7 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    // ánh xạ vao list
+    // bat su kien vao list
     private void getEventClick() {
         listViewTrangChu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         listproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ListProduct.class)));
 
     }
-    
+
 
     private void AddProduct() {
         addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
