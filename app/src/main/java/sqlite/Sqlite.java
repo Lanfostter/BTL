@@ -26,9 +26,9 @@ public class Sqlite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) PRIMARY KEY, p_name VARCHAR(50)," +
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(p_id VARCHAR(50) NOT NULL PRIMARY KEY, p_name VARCHAR(50)," +
                 "p_quantity INTEGER, p_price VARCHAR(50), p_img BLOB)");
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ACCOUNT(u_id INTEGER PRIMARY KEY, u_username VARCHAR(50), " +
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ACCOUNT(u_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, u_username VARCHAR(50), " +
                 "u_password VARCHAR(50), u_role VARCHAR(50))");
     }
 

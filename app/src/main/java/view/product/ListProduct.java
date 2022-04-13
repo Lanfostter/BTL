@@ -45,8 +45,6 @@ public class ListProduct extends AppCompatActivity {
     Sqlite sqlite = new Sqlite(this, "AppElectronicsDevicesSale.sqlite", null, 1);
     ListView lvproduct;
     ArrayList<Product> products;
-    Product product = new Product();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

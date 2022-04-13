@@ -58,16 +58,16 @@ public class HomeScreen extends AppCompatActivity {
         getEventClick();// tạo method
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
-        listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item,products));
+        listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item, products));
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             products = sqlite.getAllProduct();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(),0, product.getImage().length);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
             imageView.setImageBitmap(bitmap);
         }
     }
@@ -106,7 +106,6 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
     }
-
 
     private void ActionMenu() {
         arrayList = new ArrayList<>();

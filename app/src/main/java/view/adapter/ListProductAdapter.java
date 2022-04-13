@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,9 +16,11 @@ import com.example.btl.R;
 import java.util.List;
 
 import model.Product;
+import view.HomeScreen;
 
 public class ListProductAdapter extends BaseAdapter {
     private Context context;
+    private HomeScreen homeScreen;
     private int layout;
     private List<Product> products;
 
@@ -45,6 +48,7 @@ public class ListProductAdapter extends BaseAdapter {
     private class ViewHolder{
         TextView txtName, txtPrice;
         ImageView iv_product;
+        Button addtocart;
 
     }
 
@@ -70,7 +74,6 @@ public class ListProductAdapter extends BaseAdapter {
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(),0, product.getImage().length);
         holder.iv_product.setImageBitmap(bitmap);
-
         return view;
     }
 }

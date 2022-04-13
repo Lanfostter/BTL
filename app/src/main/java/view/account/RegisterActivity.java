@@ -30,17 +30,35 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText id = (EditText) findViewById(R.id.editText_id);
                 EditText username = (EditText) findViewById(R.id.editText_username);
                 EditText password = (EditText) findViewById(R.id.editText_password);
+                EditText confirmpassword = (EditText) findViewById(R.id.editText_confirm_password);
                 EditText role = (EditText) findViewById(R.id.editText_role);
-                Account newaccound = new Account(Integer.parseInt(id.getText().toString()), username.getText().toString(),
-                        password.getText().toString(), role.getText().toString());
-                sqlite.insertAccount(newaccound);
-                if (sqlite.insertAccount(newaccound) == true) {
-                    Toast toast = Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG);
-                    toast.show();
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast toast = Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_LONG);
+                if (!(id.getText().toString().isEmpty() && username.getText().toString().isEmpty() && id.getText().toString().isEmpty())) {
+                    if (password.getText().equals(confirmpassword.getText())) {
+                        Account newaccound = new Account(Integer.parseInt(id.getText().toString()), username.getText().toString(),
+                                password.getText().toString(), role.getText().toString());
+                        if (newaccound.getPassword().length() >= 6) {
+                            sqlite.insertAccount(newaccound);
+                            if (sqlite.insertAccount(newaccound) == true) {
+                                Toast toast = Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG);
+                                toast.show();
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast toast = Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        } else {
+                            Toast toast = Toast.makeText(RegisterActivity.this, "Passwords must be at least 6 characters", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } else {
+                        Toast toast = Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_LONG);
+                        toast.show();
+
+                    }
+                }
+                else {
+                    Toast toast = Toast.makeText(RegisterActivity.this, "Please enter full infomation", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }

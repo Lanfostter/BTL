@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.btl.R;
+import com.example.btl.UserRegister;
 
 import sqlite.Sqlite;
 import view.HomeScreen;
@@ -28,11 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         username = (EditText) findViewById(R.id.editText_username);
-        password = (EditText)  findViewById(R.id.editText_password);
+        password = (EditText) findViewById(R.id.editText_password);
         btnlogin = (Button) findViewById(R.id.btn_sign_in);
-        btnregister = (Button) findViewById(R.id.btn_sign_up);
-        ClickSignup();
-
+        btnregister = (Button) findViewById(R.id.btn_sign_up1);
+        btnregister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, UserRegister.class)));
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,23 +40,19 @@ public class LoginActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if(user.equals("")||pass.equals("")) {
+                if (user.equals("") || pass.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else {
                     boolean checker = sqlite.checker(user, pass);
-                    if (checker==true){
+                    if (checker == true) {
                         Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, UserIndex.class);
                         startActivity(intent);
-                    } else{
-                        Toast.makeText(LoginActivity.this, "Invalid account",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Invalid account", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
-    }
-
-    private void ClickSignup() {
-        btnregister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 }
