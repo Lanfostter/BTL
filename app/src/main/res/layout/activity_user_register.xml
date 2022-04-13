@@ -97,9 +97,9 @@
         android:layout_below="@id/editText_confirmpassword1"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="129dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="128dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="Sign Up" />
 

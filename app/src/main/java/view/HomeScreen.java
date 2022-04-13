@@ -162,6 +162,11 @@ public class HomeScreen extends AppCompatActivity {
         listViewTrangChu = findViewById(R.id.listviewtrangchu);
         navigationView = findViewById(R.id.navigationview);
         drawerLayout = findViewById(R.id.drawerlayout);
+    }
 
+    public void ViewProduct(String id) {
+        Product.takeid = id;
+        Intent intent = new Intent(this, ProductDetail.class);
+        startActivity(intent);
     }
 }

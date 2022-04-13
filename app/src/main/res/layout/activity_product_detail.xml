@@ -44,7 +44,6 @@
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="Price: 1.000.000đ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <Spinner

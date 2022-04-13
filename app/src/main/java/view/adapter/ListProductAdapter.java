@@ -19,16 +19,21 @@ import model.Product;
 import view.HomeScreen;
 
 public class ListProductAdapter extends BaseAdapter {
-    private Context context;
     private HomeScreen homeScreen;
     private int layout;
     private List<Product> products;
 
-    public ListProductAdapter(Context context, int layout, List<Product> products) {
-        this.context = context;
+    public ListProductAdapter(HomeScreen homeScreen, int layout, List<Product> products) {
+        this.homeScreen = homeScreen;
         this.layout = layout;
         this.products = products;
     }
+
+//    public ListProductAdapter(HomeScreen homeScreen, int layout, List<Product> products) {
+//        this.homeScreen = homeScreen;
+//        this.layout = layout;
+//        this.products = products;
+//    }
 
     @Override
     public int getCount() {
@@ -45,7 +50,7 @@ public class ListProductAdapter extends BaseAdapter {
         return Integer.parseInt(products.get(i).getId());
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         TextView txtName, txtPrice;
         ImageView iv_product;
         Button addtocart;
@@ -57,9 +62,9 @@ public class ListProductAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         ViewHolder holder;
-        if (view == null){
+        if (view == null) {
             holder = new ViewHolder();
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) homeScreen.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtName = (TextView) view.findViewById(R.id.p_name1);
             holder.txtPrice = (TextView) view.findViewById(R.id.p_price);
@@ -72,8 +77,15 @@ public class ListProductAdapter extends BaseAdapter {
         holder.txtName.setText("Name: " + product.getName());
         holder.txtPrice.setText("Price: " + product.getPrice());
 
-        Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(),0, product.getImage().length);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         holder.iv_product.setImageBitmap(bitmap);
+        holder.addtocart = (Button) view.findViewById(R.id.btn_view);
+        holder.addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                homeScreen.ViewProduct(product.getId());
+            }
+        });
         return view;
     }
 }

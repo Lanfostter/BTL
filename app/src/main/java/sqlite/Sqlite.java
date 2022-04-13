@@ -30,6 +30,7 @@ public class Sqlite extends SQLiteOpenHelper {
                 "p_quantity INTEGER, p_price VARCHAR(50), p_img BLOB)");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ACCOUNT(u_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, u_username VARCHAR(50), " +
                 "u_password VARCHAR(50), u_role VARCHAR(50))");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS CART(C_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, )");
     }
 
     @Override
@@ -80,6 +81,16 @@ public class Sqlite extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         database.delete("PRODUCT", "p_id = ?", new String[]{id});
         return 1;
+    }
+
+    public Product getProduct(String id) {
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM PRODUCT WHERE P_ID = ?", new String[]{id});
+        if (cursor != null)
+            cursor.moveToFirst();
+        Product product = cursorToProduct(cursor);
+        database.close();
+        return product;
     }
 
     public ArrayList<Product> getAllProduct() {
@@ -168,7 +179,7 @@ public class Sqlite extends SQLiteOpenHelper {
     public Boolean checker(String username, String password) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from ACCOUNT where u_username like ? and u_password like ?", new String[]{username, password});
-         if (cursor.getCount() > 0) {
+        if (cursor.getCount() > 0) {
             sqLiteDatabase.close();
             return true;
         } else {

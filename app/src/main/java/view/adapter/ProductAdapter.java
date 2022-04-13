@@ -73,7 +73,6 @@ public class ProductAdapter extends BaseAdapter {
             holder.txt_price = (TextView) view.findViewById(R.id.priceproduct);
             holder.delete = (Button) view.findViewById(R.id.bt_delete);
             holder.edit = (Button) view.findViewById(R.id.bt_update);
-            holder.iv_product = (ImageView) view.findViewById(R.id.iv_product16);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
