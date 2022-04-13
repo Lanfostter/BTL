@@ -13,21 +13,22 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/p_img"
-            android:layout_weight="3"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="2"
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/p_name"
-                android:textSize="25sp"
+                android:id="@+id/p_name1"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="Name"
                 android:layout_marginTop="5dp"
@@ -39,9 +40,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Price: 25000đ"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
                 android:textColor="@android:color/holo_red_light"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btn_view"
+                android:text="View"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_add"
+                android:text="Add to cart"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
