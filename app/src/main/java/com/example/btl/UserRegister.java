@@ -33,7 +33,7 @@ public class UserRegister extends AppCompatActivity {
                 if (!(id.getText().toString().isEmpty() && username.getText().toString().isEmpty() && password.getText().toString().isEmpty())) {
                     if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                         Account newaccound = new Account(Integer.parseInt(id.getText().toString()), username.getText().toString(),
-                                password.getText().toString(), "USER ");
+                                password.getText().toString(), "USER");
                         if (newaccound.getPassword().length() >= 6) {
                             sqlite.insertAccount(newaccound);
                             if (sqlite.insertAccount(newaccound) == true) {
