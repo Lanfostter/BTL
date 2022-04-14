@@ -52,6 +52,14 @@ public class ListProduct extends AppCompatActivity {
         lvproduct = findViewById(R.id.lv_product);
         products = sqlite.getAllProduct();
         lvproduct.setAdapter(new ProductAdapter(ListProduct.this, R.layout.item_contact, products));
+        ImageView addnewproduct = (ImageView) findViewById(R.id.img_add);
+        addnewproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListProduct.this, AddProduct.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

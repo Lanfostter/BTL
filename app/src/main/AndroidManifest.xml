@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
+            android:name=".ListAccount"
+            android:exported="false" />
+        <activity
             android:name="view.Infor"
             android:exported="false" />
         <activity
@@ -47,7 +50,7 @@
             android:exported="false" />
         <activity
             android:name="view.HomeScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,8 +71,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>

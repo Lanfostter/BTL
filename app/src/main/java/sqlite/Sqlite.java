@@ -143,9 +143,9 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public List<Account> getAllAccount() {
+    public ArrayList<Account> getAllAccount() {
         SQLiteDatabase database = getReadableDatabase();
-        List<Account> accounts = new ArrayList<>();
+        ArrayList<Account> accounts = new ArrayList<>();
         accounts.clear();
         Cursor cursor = database.query("account", allColumnsA, null,
                 null, null, null, null);
@@ -186,6 +186,15 @@ public class Sqlite extends SQLiteOpenHelper {
             sqLiteDatabase.close();
             return false;
         }
+    }
+    public Account getAccount(String username, String password) {
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM ACCOUNT WHERE U_USERNAME = ? AND U_PASSWORD = ?", new String[]{username, password});
+        if (cursor != null)
+            cursor.moveToFirst();
+        Account account = cursorToAccount(cursor);
+        database.close();
+        return account;
     }
 
 }

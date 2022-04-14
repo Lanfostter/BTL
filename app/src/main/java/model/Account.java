@@ -57,4 +57,6 @@ public class Account {
                 ", role='" + role + '\'' +
                 '}';
     }
+    public static int takeid;
+
 }

@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.btl.MainActivity;
 import com.example.btl.R;
 import com.example.btl.UserRegister;
 
+import model.Account;
+import model.Product;
 import security.SessionManager;
 import sqlite.Sqlite;
 import view.HomeScreen;
@@ -23,13 +26,12 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin, btnregister;
-    SessionManager sessionManager;
+    Account account = new Account();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sessionManager = new SessionManager(getApplicationContext());
         username = (EditText) findViewById(R.id.editText_username);
         password = (EditText) findViewById(R.id.editText_password);
         btnlogin = (Button) findViewById(R.id.btn_sign_in);
@@ -47,9 +49,14 @@ public class LoginActivity extends AppCompatActivity {
                     boolean checker = sqlite.checker(user, pass);
                     if (checker == true) {
                         Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        sessionManager.createLoginSessison(user, pass);
-                        Intent intent = new Intent(LoginActivity.this, UserIndex.class);
-                        startActivity(intent);
+                        account = sqlite.getAccount(user, pass);
+                        if (account.getRole().equals("ADMIN")) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else if (account.getRole().equals("USER")){
+                            Intent intent = new Intent(LoginActivity.this, UserIndex.class);
+                            startActivity(intent);
+                        }
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid account", Toast.LENGTH_SHORT).show();
                     }
