@@ -38,7 +38,7 @@ public class UpdateAccount extends AppCompatActivity {
                 if (!(password.getText().toString().isEmpty() || username.getText().toString().isEmpty() || role.getText().toString().isEmpty())) {
                     if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                         Account account = new Account(Account.takeid, username.getText().toString(), password.getText().toString(), role.getText().toString());
-                        if (sqlite.updateAccount(account, Account.takeid)) {
+                        if (sqlite.updateAccount(account, Integer.parseInt(phone.getText().toString()))) {
                             Toast toast = Toast.makeText(UpdateAccount.this, "Update success", Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(UpdateAccount.this, ListAccount.class);

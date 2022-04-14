@@ -138,7 +138,8 @@ public class Sqlite extends SQLiteOpenHelper {
         contentValues.put("u_username", account.getUsername());
         contentValues.put("u_password", account.getPassword());
         contentValues.put("u_role", account.getRole());
-        database.update("ACCOUNT", contentValues, String.valueOf(account.getId()), null);
+        database.update("account", contentValues,
+                "u_id = ?", new String[]{String.valueOf(id)});
         database.close();
         return true;
     }
@@ -187,6 +188,7 @@ public class Sqlite extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public Account getAccount(String username, String password) {
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM ACCOUNT WHERE U_USERNAME = ? AND U_PASSWORD = ?", new String[]{username, password});
@@ -196,6 +198,7 @@ public class Sqlite extends SQLiteOpenHelper {
         database.close();
         return account;
     }
+
     public Account getAccoundByPhone(int phone) {
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM PRODUCT WHERE P_ID = ?", new String[]{String.valueOf(phone)});
