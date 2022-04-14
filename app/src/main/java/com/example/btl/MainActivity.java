@@ -29,18 +29,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SQLiteDatabase sqLiteDatabase = sqlite.getReadableDatabase();
         sqlite.onCreate(sqLiteDatabase);
-        login = (Button) findViewById(R.id.btn_sign_in);
+//        login = (Button) findViewById(R.id.btn_sign_in);
         register = (Button) findViewById(R.id.btn_sign_up);
         homescreen = (Button) findViewById(R.id.btn_home_screen);
-        addproduct = (Button) findViewById(R.id.btn_add_product);
-        listproduct = (Button) findViewById(R.id.btn_listproduct);
+        listproduct = (Button) findViewById(R.id.btn_listproduct1);
         cart = (Button) findViewById(R.id.btn_cart);
         ClickHomescreen();
-        ClickLogin();
+//        ClickLogin();
         ClickRegister();
         ClickCart();
         ClickList();
-        AddProduct();
+//        AddProduct();
     }
 
 
@@ -56,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void AddProduct() {
-        addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
-    }
+//    private void AddProduct() {
+//        addproduct.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddProduct.class)));
+//    }
 
     private void ClickHomescreen() {
         homescreen.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HomeScreen.class)));// chuyen trang home
@@ -66,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     // bắt sự kiện onclick login
-    public void ClickLogin() {
-        login.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));// chuyen trang
-    }
-
-    // bắt sự kiện onclick register
+//    public void ClickLogin() {
+//        login.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));// chuyen trang
+//    }
+//
+//    // bắt sự kiện onclick register
     public void ClickRegister() {
         register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ListAccount.class)));
     }

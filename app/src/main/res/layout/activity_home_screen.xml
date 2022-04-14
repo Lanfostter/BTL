@@ -19,7 +19,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbartrangchu"
                 app:title="Home"
-                android:background="#6287E4"
+                android:background="#4A6FCD"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
 
@@ -35,7 +35,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#62C5C5"
+                android:background="#D7E4E4"
                 android:orientation="vertical">
 
                 <ImageView
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="All Product"
-                    android:textColor="#B71C1C"
+                    android:textColor="#D31212"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
