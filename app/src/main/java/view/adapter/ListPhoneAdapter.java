@@ -82,7 +82,7 @@ public class ListPhoneAdapter extends BaseAdapter {
         }
         Product product = (Product) getItem(i);
         holder.txt_name.setText("Name: " + product.getName());
-        holder.txt_price.setText("Price: " + product.getPrice());
+        holder.txt_price.setText("Price: " + product.getPrice() + "₫");
         // chuyển ảnh từ dạng byte sang bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         // lấy ảnh dưới dạng bitmap gán vào imageview

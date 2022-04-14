@@ -56,7 +56,7 @@ public class UserRegister extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast toast = Toast.makeText(UserRegister.this, "Please enter full infomation", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(UserRegister.this, "Please enter full information", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }

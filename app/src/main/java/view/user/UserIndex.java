@@ -30,10 +30,13 @@ import view.Infor;
 import view.ItemMenu;
 import view.LaptopList;
 import view.PhoneList;
+import view.ProductDetail;
 import view.ShoppingCart;
+import view.adapter.ListProductAdapter;
 import view.adapter.MenuAdapter;
 import model.Product;
 import sqlite.Sqlite;
+import view.adapter.UserAdapter;
 
 public class UserIndex extends AppCompatActivity {
     SessionManager sessionManager;
@@ -52,6 +55,7 @@ public class UserIndex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        sessionManager = new SessionManager(getApplicationContext());
         Anhxa();
         ActionBar();
         ActionViewFlipper();
@@ -59,9 +63,7 @@ public class UserIndex extends AppCompatActivity {
         getEventClick();// tạo method
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
-        ArrayAdapter adapter = new ArrayAdapter(UserIndex.this, android.R.layout.simple_list_item_1, products);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        listView.setAdapter(new UserAdapter(UserIndex.this, R.layout.single_item, products));
 
 
     }
@@ -98,8 +100,8 @@ public class UserIndex extends AppCompatActivity {
                         break;
                     case 6:
                         Intent logout = new Intent(getApplicationContext(), HomeScreen.class);
-                        sessionManager.logoutUser();
                         startActivity(logout);
+                        sessionManager.logoutUser();
                         break;
                 }
             }
@@ -160,5 +162,16 @@ public class UserIndex extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationview);
         drawerLayout = findViewById(R.id.drawerlayout);
 
+    }
+
+    public void viewProduct(String id) {
+        Product.takeid = id;
+        Intent intent = new Intent(this, ProductDetail.class);
+        startActivity(intent);
+    }
+    public void addToCart(String id){
+        Product.takeid = id;
+        Intent intent = new Intent(this, ShoppingCart.class);
+        startActivity(intent);
     }
 }

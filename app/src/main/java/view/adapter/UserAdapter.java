@@ -19,13 +19,13 @@ import model.Product;
 import view.HomeScreen;
 import view.user.UserIndex;
 
-public class ListProductAdapter extends BaseAdapter {
-    private HomeScreen homeScreen;
+public class UserAdapter extends BaseAdapter {
+    private UserIndex userIndex;
     private int layout;
     private List<Product> products;
 
-    public ListProductAdapter(HomeScreen homeScreen, int layout, List<Product> products) {
-        this.homeScreen = homeScreen;
+    public UserAdapter(UserIndex userIndex, int layout, List<Product> products) {
+        this.userIndex = userIndex;
         this.layout = layout;
         this.products = products;
     }
@@ -57,30 +57,30 @@ public class ListProductAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
+        UserAdapter.ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
             // chuyển layout file (xml) thành dạng view
-            LayoutInflater inflater = (LayoutInflater) homeScreen.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) userIndex.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtName = (TextView) view.findViewById(R.id.p_name1);
             holder.txtPrice = (TextView) view.findViewById(R.id.p_price);
             holder.iv_product = (ImageView) view.findViewById(R.id.p_img);
             view.setTag(holder);
         } else {
-            holder = (ViewHolder) view.getTag();
+            holder = (UserAdapter.ViewHolder) view.getTag();
         }
         Product product = (Product) getItem(i);
         holder.txtName.setText("Name: " + product.getName());
-        holder.txtPrice.setText("Price: " + product.getPrice() + "₫");
+        holder.txtPrice.setText("Price: " + product.getPrice());
         // chuyển ảnh từ dạng byte sang bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         // lấy ảnh dưới dạng bitmap gán vào imageview
         holder.iv_product.setImageBitmap(bitmap);
         holder.view = (Button) view.findViewById(R.id.btn_view);
-        holder.view.setOnClickListener(view12 -> homeScreen.viewProduct(product.getId()));
+        holder.view.setOnClickListener(view12 -> userIndex.viewProduct(product.getId()));
         holder.addcart = (Button) view.findViewById(R.id.btn_add);
-        holder.addcart.setOnClickListener(view1 -> homeScreen.addToCart(product.getId()));
+        holder.addcart.setOnClickListener(view1 -> userIndex.addToCart(product.getId()));
 
         return view;
     }

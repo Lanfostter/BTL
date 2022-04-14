@@ -13,6 +13,7 @@ import com.example.btl.R;
 import java.util.ArrayList;
 
 import model.Product;
+import security.SessionManager;
 
 public class ShoppingCart extends AppCompatActivity {
     Button btnmuahang;
@@ -23,6 +24,7 @@ public class ShoppingCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+
         btnmuahang = (Button) findViewById(R.id.btnmuahang);
         ClickMuaHang();
     }

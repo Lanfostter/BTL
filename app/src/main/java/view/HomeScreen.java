@@ -60,7 +60,6 @@ public class HomeScreen extends AppCompatActivity {
         ActionViewFlipper();
         ActionMenu();
         getEventClick();
-
         listView = findViewById(R.id.listview_item);
         products = sqlite.getAllProduct();
         listView.setAdapter(new ListProductAdapter(HomeScreen.this, R.layout.single_item, products));
