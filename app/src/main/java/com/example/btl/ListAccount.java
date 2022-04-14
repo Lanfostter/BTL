@@ -16,6 +16,7 @@ import model.Account;
 import model.Product;
 import sqlite.Sqlite;
 import view.account.RegisterActivity;
+import view.account.UpdateAccount;
 import view.adapter.AccountAdapter;
 import view.adapter.ProductAdapter;
 import view.product.ListProduct;
@@ -45,7 +46,8 @@ public class ListAccount extends AppCompatActivity {
 
     public void editAccount(int id) {
         Account.takeid = id;
-
+        Intent intent = new Intent(ListAccount.this, UpdateAccount.class);
+        startActivity(intent);
     }
 
     public void dialogDeleteAccount(int id) {

@@ -10,12 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:title="Update Account"
         android:background="#4211C8"
-        app:titleTextColor="#FBFBFB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Update Account"
+        app:titleTextColor="#FBFBFB">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -118,6 +118,7 @@
         android:layout_marginBottom="44dp"
         android:autofillHints=""
         android:ems="10"
+        android:focusable="false"
         android:hint="Phone"
         android:inputType="textPersonName"
         android:textAlignment="center"
