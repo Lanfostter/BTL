@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class ListLapTop extends BaseAdapter {
+public class ListLapTopAdapter extends BaseAdapter {
 
 
     @Override
