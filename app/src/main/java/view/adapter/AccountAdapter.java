@@ -42,7 +42,7 @@ public class AccountAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        TextView txt_phone, txt_username, txt_password;
+        TextView txt_phone, txt_username, txt_password, txt_role;
         ImageView iv_product;
         Button delete, edit;
     }
@@ -58,6 +58,7 @@ public class AccountAdapter extends BaseAdapter {
             holder.txt_phone = (TextView) view.findViewById(R.id.tv_phone);
             holder.txt_username = (TextView) view.findViewById(R.id.tv_username);
             holder.txt_password = (TextView) view.findViewById(R.id.tv_password);
+            holder.txt_role = (TextView) view.findViewById(R.id.tv_role);
             holder.delete = (Button) view.findViewById(R.id.bt_deleteaccount);
             holder.edit = (Button) view.findViewById(R.id.bt_updateaccount);
             view.setTag(holder);
@@ -65,9 +66,10 @@ public class AccountAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         Account account = (Account) getItem(i);
-        holder.txt_phone.setText("ID: " + account.getId());
-        holder.txt_username.setText("Name: " + account.getUsername());
-        holder.txt_password.setText("Price" + account.getPassword());
+        holder.txt_phone.setText("Phone: " + account.getId());
+        holder.txt_username.setText("Username: " + account.getUsername());
+        holder.txt_password.setText("Password: " + account.getPassword());
+        holder.txt_role.setText("Role: " + account.getRole());
         holder.edit.setOnClickListener(view12 -> {
             context.editAccount(account.getId());
             notifyDataSetChanged();

@@ -1,5 +1,6 @@
 package com.example.btl;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -44,11 +45,20 @@ public class ListAccount extends AppCompatActivity {
 
     public void editAccount(int id) {
         Account.takeid = id;
-        
+
     }
 
     public void dialogDeleteAccount(int id) {
         Account.takeid = id;
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you want to delete this account ?");
+        builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+            sqlite.queryData("DELETE FROM ACCOUNT WHERE U_ID LIKE '" + id + "'");
+            sqlite.getAllProduct();
+            startActivity(new Intent(ListAccount.this, ListAccount.class));
+        });
+        builder.setNegativeButton("No", (dialogInterface, i) -> {
+        });
+        builder.show();
     }
 }

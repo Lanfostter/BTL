@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL">
         <activity
+            android:name="view.account.UpdateAccount"
+            android:exported="false" />
+        <activity
             android:name=".ListAccount"
             android:exported="false" />
         <activity

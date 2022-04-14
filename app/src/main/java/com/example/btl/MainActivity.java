@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     // bắt sự kiện onclick register
     public void ClickRegister() {
-        register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
+        register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ListAccount.class)));
     }
 
 

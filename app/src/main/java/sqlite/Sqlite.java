@@ -132,7 +132,7 @@ public class Sqlite extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean updateAccount(Account account) {
+    public boolean updateAccount(Account account, int id) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("u_username", account.getUsername());
@@ -196,5 +196,13 @@ public class Sqlite extends SQLiteOpenHelper {
         database.close();
         return account;
     }
-
+    public Account getAccoundByPhone(int phone) {
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM PRODUCT WHERE P_ID = ?", new String[]{String.valueOf(phone)});
+        if (cursor != null)
+            cursor.moveToFirst();
+        Account account = cursorToAccount(cursor);
+        database.close();
+        return account;
+    }
 }
